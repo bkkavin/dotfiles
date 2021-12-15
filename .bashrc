@@ -8,7 +8,7 @@ alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
 
-#foo
+#foo2
 #exec ssh-agent bash
 
 #/home/su/Scripts/fun.sh 
