@@ -13,7 +13,7 @@
 
 ;(set-face-attribute 'default nil :font "Fira Code Retina" :height 280)
 
-(load-theme 'wheatgrass)
+
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -28,7 +28,8 @@
 
 (package-initialize)
 (unless package-archive-contents
- (package-refresh-contents))
+ (package-refresh-contents t))
+
 
 ;; Initialize use-package on non-Linux platforms
 (unless (package-installed-p 'use-package)
@@ -73,8 +74,9 @@
   :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
-
+(use-package all-the-icons)
 (use-package doom-themes)
+:init(load-theme 'doom-ir-black t)
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -83,6 +85,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("266ecb1511fa3513ed7992e6cd461756a895dcc5fef2d378f165fed1c894a78c" default))
  '(package-selected-packages
    '(doom-themes helpful counsel ivy-rich which-key rainbow-delimiters use-package no-littering ivy doom-modeline command-log-mode auto-package-update))
  '(which-key-mode t))
