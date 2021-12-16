@@ -3,9 +3,9 @@
 ;(scroll-bar-mode -1)        ; Disable visible scrollbar
 ;(tool-bar-mode -1)          ; Disable the toolbar
 ;(tooltip-mode -1)           ; Disable tooltips
+;;(menu-bar-mode -1)         ; Disable the menu bar
 (set-fringe-mode 10)        ; Give some breathing room
 
-(menu-bar-mode -1)            ; Disable the menu bar
 
 ;; Set up the visible bell
 (setq visible-bell t)
@@ -36,7 +36,7 @@
 (setq use-package-always-ensure t)
 
 (column-number-mode)
-(global-display-line-number-mode t)
+(global-display-line-numbers-mode t)
 ;; Enable line numbers for some modes
 (dolist (mode '(text-mode-hook
                 prog-mode-hook
@@ -70,9 +70,25 @@
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
-  :custom ((doom-modeline-height 15)))(setq inhibit-startup-message t)
+  :custom ((doom-modeline-height 15)))
 
-(set-fringe-mode 10)        ; Give some breathing room
-
-(menu-bar-mode -1)            ; Disable the menu bar
-
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(which-key rainbow-delimiters use-package no-littering ivy doom-modeline command-log-mode auto-package-update)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(use-package which-key
+       :init (which-key-mode)
+       :diminish 'which-key-mode
+       :config
+  (setq which-key-idle-delay 0.3))
