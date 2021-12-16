@@ -7,4 +7,4 @@ cd ~/git/dotfiles/
 ~/gssh.sh
 git commit -a -m "dotfiles update"
 git push
-cd 
+cd ~ 
