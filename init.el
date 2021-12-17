@@ -39,7 +39,8 @@
 (setq use-package-always-ensure t)
 
 (column-number-mode)
-(global-display-line-numbers-mode t)
+(global-display-line-numbers-mode  
+(setq  display-line-numbers-type 'relative))
 ;; Enable line numbers for some modes
 (dolist (mode '(text-mode-hook
                 prog-mode-hook
@@ -56,7 +57,7 @@
   :diminish
   :bind (("C-s" . swiper)
          :map ivy-minibuffer-map
-         ;("TAB" . ivy-alt-done)	
+         ("TAB" . ivy-alt-done)	
          ("C-l" . ivy-alt-done)
          ("C-j" . ivy-next-line)
          ("C-k" . ivy-previous-line)
@@ -69,6 +70,8 @@
          ("C-d" . ivy-reverse-i-search-kill))
   :config
   (ivy-mode 1))
+
+(global-set-key (kbd "C-M-b") 'counsel-ibuffer)
 
 (use-package doom-modeline
   :ensure t
@@ -88,7 +91,7 @@
  '(custom-safe-themes
    '("266ecb1511fa3513ed7992e6cd461756a895dcc5fef2d378f165fed1c894a78c" default))
  '(package-selected-packages
-   '(doom-themes helpful counsel ivy-rich which-key rainbow-delimiters use-package no-littering ivy doom-modeline command-log-mode auto-package-update))
+   '(general doom-themes helpful counsel ivy-rich which-key rainbow-delimiters use-package no-littering ivy doom-modeline command-log-mode auto-package-update))
  '(which-key-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -125,3 +128,31 @@
   ([remap describe-key] . helpful-key))
  
 
+(use-package general)
+:config
+ (general-create-definer rune/leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
+
+  (general-create-definer bkk/ctrl-c-keys
+    :prefix "C-c")
+ 
+(rune/leader-keys
+"t" '(:ignore t :which-key "toggles"))
+
+(use-package evil
+:init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+ ;(setq evil-want-C-u-scroll t)
+ ;(setq evil-want-C-i-jump nil)
+  
+:config
+(evil-mode 1)
+ (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state) 
+ (define-key evil-insert-state-map (kbd "C-m") 'evil-delete-backward-char-and-join)
+ ;; Use visual line motions even outside of visual-line-mode buffers
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+ 
