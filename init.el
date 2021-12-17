@@ -79,7 +79,7 @@
   :custom ((doom-modeline-height 15)))
 (use-package all-the-icons)
 (use-package doom-themes)
-:init(load-theme 'doom-ir-black t)
+:init(load-theme 'doom-monokai-spectrum t)
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
