@@ -155,6 +155,7 @@
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
  (evil-mode 1))  
 (use-package evil-collection)   
-
-
+:after evil
+:config
+(evil-collection-init)
 
