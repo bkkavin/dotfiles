@@ -153,9 +153,22 @@
  ;; Use visual line motions even outside of visual-line-mode buffers
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
- (evil-mode 1))  
-(use-package evil-collection)   
+ (evil-mode 1)) 
+
+
+(use-package evil-collection 
 :after evil
 :config
-(evil-collection-init)
+(evil-collection-init))
 
+
+(use-package hydra)
+
+(defhydra hydra-text-scale (:timeout 4)
+  "scale text"
+  ("j" text-scale-increase "in")
+  ("k" text-scale-decrease "out")
+  ("f" nil "finished" :exit t))
+
+(rune/leader-keys
+  "ts" '(hydra-text-scale/body :which-key "scale text"))
