@@ -1,4 +1,3 @@
-
 (setq inhibit-startup-message t)
 
 ;(scroll-bar-mode -1)        ; Disable visible scrollbar
@@ -128,8 +127,8 @@
   ([remap describe-key] . helpful-key))
  
 
-(use-package general)
-:config
+(use-package general
+  :config
  (general-create-definer rune/leader-keys
     :keymaps '(normal insert visual emacs)
     :prefix "SPC"
@@ -139,7 +138,7 @@
     :prefix "C-c")
  
 (rune/leader-keys
-"t" '(:ignore t :which-key "toggles"))
+"t" '(:ignore t :which-key "toggles")))
 
 (use-package evil
 :init
@@ -147,13 +146,15 @@
   (setq evil-want-keybinding nil)
  ;(setq evil-want-C-u-scroll t)
  ;(setq evil-want-C-i-jump nil)
-  
+ 
 :config
-(evil-mode 1)
  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state) 
  (define-key evil-insert-state-map (kbd "C-m") 'evil-delete-backward-char-and-join)
  ;; Use visual line motions even outside of visual-line-mode buffers
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
- 
-  (use-package evil-collection)
+ (evil-mode 1))  
+(use-package evil-collection)   
+
+
+
