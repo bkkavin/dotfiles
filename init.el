@@ -156,3 +156,4 @@
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
  
+  (use-package evil-collection)
