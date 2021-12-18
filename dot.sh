@@ -1,6 +1,6 @@
-cp ~/.bashrc ~/git/dotfiles/
-cp ~/.emacs.d/init.el ~/git/dotfiles/
-cp ~/dot.sh ~/git/dotfiles/
+cp ~/git/dotfiles/.bashrc ~/.bashrc 
+cp ~/git/dotfiles/init.el ~/.emacs.d/init.el 
+cp ~/git/dotfiles/dot.sh ~/dot.sh
 cp ~/Scripts/* ~/git/dotfiles/
 cd ~/git/dotfiles/
 eval ' ssh-agent -s'
