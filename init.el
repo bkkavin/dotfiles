@@ -148,14 +148,13 @@
  ;(setq evil-want-C-i-jump nil)
  
 :config
+ (evil-mode 1)) 
  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state) 
  (define-key evil-insert-state-map (kbd "C-m") 'evil-delete-backward-char-and-join)
  ;; Use visual line motions even outside of visual-line-mode buffers
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
- (evil-mode 1)) 
-
-
+  
 (use-package evil-collection 
 :after evil
 :config
@@ -184,4 +183,4 @@
   ;; NOTE: Set this to the folder where you keep your Git repos!
   (when (file-directory-p "~/git/")
     (setq projectile-project-search-path '("~/git/")))
-  (setq projectile-switch-project-action #'projectile-dired)
+  (setq projectile-switch-project-action #'projectile-dired))
