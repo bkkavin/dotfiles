@@ -173,6 +173,7 @@
 (rune/leader-keys
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 
+
 (use-package projectile
   :diminish projectile-mode
   :config (projectile-mode)
@@ -181,6 +182,6 @@
   ("C-c p" . projectile-command-map)
   :init
   ;; NOTE: Set this to the folder where you keep your Git repos!
-  (when (file-directory-p "~")
-    (setq projectile-project-search-path '("~"))
-  (setq projectile-switch-project-action #'projectile-dired))
+  (when (file-directory-p "~/git/")
+    (setq projectile-project-search-path '("~/git/")))
+  (setq projectile-switch-project-action #'projectile-dired)
