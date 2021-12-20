@@ -13,7 +13,6 @@
 ;(set-face-attribute 'default nil :font "Fira Code Retina" :height 280)
 
 
-
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
@@ -198,3 +197,4 @@
 
 
 
+(message (emacs-init-time))
