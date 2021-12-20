@@ -196,5 +196,5 @@
 (use-package forge)
 
 
-
-(message (emacs-init-time))
+;(message (emacs-init-time))
+(add-hook 'after-init-hook (lambda () (message (emacs-init-time))))
