@@ -1,8 +1,19 @@
-clear lock
-clear control
-keycode 66 = Control_L
-add control = Control_L
-add Lock = Control_R
+
+!
+! Swap Caps_Lock and Control_L
+!
+remove Lock = Caps_Lock
+remove Control = Control_L
+remove Lock = Control_L
+remove Control = Caps_Lock
+keysym Control_L = Caps_Lock
+keysym Caps_Lock = Control_L
+add Lock = Caps_Lock
+add Control = Control_L
+
+
+
+
 
 
 ! xmodmap for the Colemak Mod-DH layout (US, ANSI keyboard, Z angle mod).
