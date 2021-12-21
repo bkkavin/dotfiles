@@ -144,6 +144,7 @@
 :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
+   (setq evil-want-fine-undo t)
  ;(setq evil-want-C-u-scroll t)
  ;(setq evil-want-C-i-jump nil)
  
@@ -198,4 +199,7 @@
 
 
 ;(message (emacs-init-time))
-(add-hook 'after-init-hook (lambda () (message (emacs-init-time))))
+(add-hook 'after-in
+	  it-hook (lambda () (message (emacs-init-time)))
+;(global-undo-tree-mode)
+;(add-hook ’evil-local-mode-hook ’turn-on-undo-tree-mode)) 
