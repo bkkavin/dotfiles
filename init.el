@@ -153,6 +153,8 @@
  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state) 
  (define-key evil-insert-state-map (kbd "C-m") 'evil-delete-backward-char-and-join)
  (define-key evil-insert-state-map (kbd "RET") 'newline)
+ (define-key evil-normal-state-map "u" 'undo-tree-undo)
+ (define-key evil-normal-state-map (kbd "C-r") 'undo-tree-redo)
  ;; Use visual line motions even outside of visual-line-mode buffers
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line))
