@@ -261,3 +261,8 @@
 
 (use-package visual-fill-column
   :hook (org-mode . bkk/org-mode-visual-fill))
+
+
+
+(use-package org-roam
+  :ensure t)
