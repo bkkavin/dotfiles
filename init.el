@@ -68,9 +68,10 @@
          ("C-d" . ivy-reverse-i-search-kill))
   :config
   (ivy-mode 1))
+   
 
 (global-set-key (kbd "C-M-b") 'counsel-ibuffer)
-
+(setq evil-undo-system 'undo-tree)
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
