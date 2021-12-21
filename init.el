@@ -205,3 +205,5 @@
 	  it-hook (lambda () (message (emacs-init-time)))
 ;(global-undo-tree-mode)
 ;(add-hook ’evil-local-mode-hook ’turn-on-undo-tree-mode)) 
+(add-hook 'after-save-hook
+  'executable-make-buffer-file-executable-if-script-p)
