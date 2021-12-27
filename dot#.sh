@@ -1,7 +1,9 @@
 cp ~/git/dotfiles/.bashrc ~
 cp ~/git/dotfiles/init.el ~/.emacs.d/init.el 
-cp ~/dot.sh ~/git/dotfiles/
+cp ~/dot#.sh ~/git/dotfiles/
 cp ~/git/dotfiles/.Xmodmap ~
+cp ~/git/dotfiles/.Xresources ~
+
 #cp ~/Scripts/* ~/git/dotfiles/
 #cd ~/git/dotfiles/
 #eval ' ssh-agent -s'
