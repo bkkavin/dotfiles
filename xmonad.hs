@@ -54,7 +54,7 @@ myManageHook = manageSpawn <+> manageHook def <+> composeAll
 
 myStartupHook = do
 
-spawnAndDo manageSpawn "emacs"
+{-spawnAndDo manageSpawn "emacs" -}
 
 {-spawnOn "1" "emacs"-}
 spawnOn "2" "brave"
