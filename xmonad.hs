@@ -58,7 +58,7 @@ myManageHook = manageSpawn <+> manageHook def <+> composeAll
 
 {-spawnAndDo manageSpawn "emacs" -}
 
-(-spawnOn "1" "emacs"-}
+{-spawnOn "1" "emacs"-}
 spawnOn "2" "brave"
 spawnOn "3" "urxvt"
 spawnOn "4" "urxvt ~/echo.sh" -}
