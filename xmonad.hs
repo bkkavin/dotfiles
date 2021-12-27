@@ -54,7 +54,7 @@ myManageHook = manageSpawn <+> manageHook def
 
 myStartupHook = do
 
-spawnAndDo [doRectFloat ({- RationalRect -}(1 % 4) (1 % 4) (1 % 2) (1 % 2))] "emacs"
+spawnAndDo manageSpawn "emacs"
 
 {-spawnOn "1" "emacs"-}
 spawnOn "2" "brave"
@@ -63,10 +63,10 @@ spawnOn "4" "urxvt ~/echo.sh"
 {-manageHook :: manageHook
 manageHook = composeAll
 -}
-{-manageSpawn :: manageHook
+
 manageSpawn = composeAll $ 
     [ className =? "emacs" --> doRectFloat (RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2))]
-   -} 
+    
 
 {- myManageHook :: ManageHook                                      
 myManageHook = composeAll $
