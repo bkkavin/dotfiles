@@ -65,7 +65,7 @@ manageHook = composeAll
 -}
 
 manageSpawn = composeAll $ 
-    [ className =? "emacs" --> doRectFloat ((1 % 4) (1 % 4) (1 % 2) (1 % 2))]
+    [ className =? "emacs" --> doRectFloat (1 % 4) (1 % 4) (1 % 2) (1 % 2)]
     
 
 {- myManageHook :: ManageHook                                      
