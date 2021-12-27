@@ -1,7 +1,6 @@
 import XMonad
 import Data.Monoid
 import System.Exit
-import Data.Ratio
 
 
 import qualified XMonad.StackSet as W
