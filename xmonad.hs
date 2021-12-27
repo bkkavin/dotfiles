@@ -56,12 +56,11 @@ myStartupHook = do
 spawnOn "1" "emacs"
 spawnOn "2" "brave"
 spawnOn "3" "urxvt"
-spawnOn "4" "~/echo.sh"
+spawnOn "4" "urxvt ~/echo.sh"
 {-manageHook :: manageHook
 manageHook = composeAll
 -}
 manageSpawn :: manageHook
 manageSpawn = composeAll $ 
-    [ className =? "emacs" --> doRectFloat (RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2))
-   ]
+    [ className =? "emacs" --> doRectFloat (RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2))]
     
