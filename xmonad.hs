@@ -60,7 +60,7 @@ spawnOn "4" "urxvt ~/echo.sh"
 {-manageHook :: manageHook
 manageHook = composeAll
 -}
-manageSpawn :: manageHook
+{-manageSpawn :: manageHook
 manageSpawn = composeAll $ 
     [ className =? "emacs" --> doRectFloat (RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2))]
-    
+   -} 
