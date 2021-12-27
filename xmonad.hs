@@ -1,6 +1,8 @@
 import XMonad
 import Data.Monoid
 import System.Exit
+import Data.Ratio
+
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -60,6 +62,6 @@ manageHook = composeAll
 -}
 manageSpawn :: manageHook
 manageSpawn {-= composeAll -}
-    [ className =? "emacs" --> doRectFloat (W.RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2))
+    [ className =? "emacs" --> doRectFloat (RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2))
     ]
     
