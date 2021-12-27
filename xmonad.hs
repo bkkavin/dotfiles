@@ -65,7 +65,7 @@ manageHook = composeAll
 -}
 
 manageSpawn = composeAll $ 
-    [ className =? "emacs" --> doRectFloat (W.RationalRect 0.25 0.25 0.5 0.5)] --x y w h
+    [ appName =? "emacs" --> doRectFloat (W.RationalRect 0.25 0.25 0.5 0.5)] --x y w h
    
 
 {- myManageHook :: ManageHook                                      
