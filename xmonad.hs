@@ -50,7 +50,7 @@ defaults = def
 myLayoutHook = noBorders(Full) |||  ThreeCol 1 (3/100) (1/3) {-||| ThreeColMid 1 (3/100) (1/3) -} ||| magnifier (Tall 1 (3/100) (1/2)) 
 myTerminal = "urxvt"
 myModMask  = mod4Mask
-myManageHook = manageSpawn <+> manageHook def <+> composeAll
+myManageHook = manageSpawn <+> manageHook def <+> composeAll 
 
 myStartupHook = do
 
@@ -65,8 +65,8 @@ manageHook = composeAll
 -}
 
 manageSpawn = composeAll $ 
-    [ className =? "emacs" --> doRectFloat (1 % 4) (1 % 4) (1 % 2) (1 % 2)]
-    
+    [ className =? "emacs" --> doRectFloat (W.RationalRect 0.25 0.25 0.5 0.5)] --x y w h
+   
 
 {- myManageHook :: ManageHook                                      
 myManageHook = composeAll $
