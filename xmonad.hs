@@ -54,7 +54,7 @@ myManageHook = manageSpawn <+> manageHook def <+> composeAll
              [ appName =? "emacs" --> doRectFloat (W.RationalRect 0.25 0.25 0.5 0.5)] 
 
 
-(-myStartupHook = do
+{- myStartupHook = do
 
 {-spawnAndDo manageSpawn "emacs" -}
 
