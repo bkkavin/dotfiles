@@ -42,9 +42,9 @@ defaults = def
         layoutHook         = myLayoutHook,
         manageHook         = myManageHook, 
        {-  handleEventHook    = myEventHook
-       logHook            = myLogHook -}
-        {-startupHook        = myStartupHook -}
-       }
+       logHook            = myLogHook 
+        startupHook        = myStartupHook -}
+        }
 
 
 myLayoutHook = noBorders(Full) |||  ThreeCol 1 (3/100) (1/3) {-||| ThreeColMid 1 (3/100) (1/3) -} ||| magnifier (Tall 1 (3/100) (1/2)) 
