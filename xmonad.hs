@@ -58,7 +58,7 @@ spawnOn "3" "urxvt"
 manageHook = composeAll
 -}
 manageSpawn :: ManageHook
-manageSpawn  = composeAll
+manageSpawn = composeAll
     [ className =? "emacs" --> doRectFloat (RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2))
     ]
     
