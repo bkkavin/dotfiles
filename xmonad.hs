@@ -43,7 +43,7 @@ defaults = def
         manageHook         = myManageHook, 
        {-  handleEventHook    = myEventHook
        logHook            = myLogHook -}
-        startupHook        = myStartupHook 
+        (-startupHook        = myStartupHook -}
        }
 
 
