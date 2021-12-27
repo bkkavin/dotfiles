@@ -61,7 +61,7 @@ spawnOn "4" "~/echo.sh"
 manageHook = composeAll
 -}
 manageSpawn :: manageHook
-manageSpawn {-= composeAll -}
+manageSpawn = composeAll 
     [ className =? "emacs" --> doRectFloat (RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2))
     ]
     
