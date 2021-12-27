@@ -53,7 +53,10 @@ myModMask  = mod4Mask
 myManageHook = manageSpawn <+> manageHook def
 
 myStartupHook = do
-spawnOn "1" "emacs"
+
+spawnAndDo [doRectFloat ({- RationalRect -}(1 % 4) (1 % 4) (1 % 2) (1 % 2))] "emacs"
+
+{-spawnOn "1" "emacs"-}
 spawnOn "2" "brave"
 spawnOn "3" "urxvt"
 spawnOn "4" "urxvt ~/echo.sh"
@@ -65,10 +68,10 @@ manageSpawn = composeAll $
     [ className =? "emacs" --> doRectFloat (RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2))]
    -} 
 
-myManageHook :: ManageHook                                      
+{- myManageHook :: ManageHook                                      
 myManageHook = composeAll $
 [ className =? "emacs" --> doRectFloat ({- RationalRect -}(1 % 4) (1 % 4) (1 % 2) (1 % 2))]
 
 
 
-
+-}
