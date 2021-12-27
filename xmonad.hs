@@ -64,8 +64,8 @@ spawnOn "4" "urxvt ~/echo.sh"
 manageHook = composeAll
 -}
 
-manageSpawn = composeAll $ 
-    [ appName =? "emacs" --> doRectFloat (W.RationalRect 0.25 0.25 0.5 0.5)] --x y w h
+myManageHook = composeAll $ 
+    [ appName =? "emacs" --> doRectFloat (W.RationalRect 0.25 0.25 0.5 0.5)] 
    
 
 {- myManageHook :: ManageHook                                      
