@@ -15,6 +15,8 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Magnifier
+import XMonad.Hooks.ManageHelpers
+
 
 
 
@@ -54,5 +56,10 @@ spawnOn "2" "brave"
 spawnOn "3" "urxvt"
 {-manageHook :: manageHook
 manageHook = composeAll
-{ -}
+}
 
+ manageSpawn = composeAll
+    [ className =? "emacs" --> doRectFloat (RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2))
+   
+    ]
+    
