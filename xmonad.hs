@@ -64,6 +64,6 @@ myStartupHook = do
    
 
 manageDashboard = composeAll 
-spawnAndDo (RectFloat W.RationalRect 0.25 0.25 0.5 0.5] <+> doShift "1" )
+spawnAndDo (RectFloat W.RationalRect 0.25 0.25 0.5 0.5] <+> doShift "1") "emacs"
 
 
