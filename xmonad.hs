@@ -64,6 +64,6 @@ myStartupHook = do
    
 
 manageSpawn = composeAll 
-[ className =? "emacs" --> doRectFloat & RationalRect 00.25 0.25 0.5 0.5)]  
+[ className =? "emacs" --> doRectFloat & RationalRect 00.25 0.25 0.5 0.5]  
 
 
