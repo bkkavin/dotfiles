@@ -41,8 +41,8 @@ defaults = def
         layoutHook         = myLayoutHook,
         manageHook         = myManageHook 
        {-  handleEventHook    = myEventHook
-       logHook            = myLogHook 
-        startupHook        = myStartupHook -}
+       logHook            = myLogHook -}
+        startupHook        = myStartupHook 
         }
 
 
@@ -53,7 +53,7 @@ myModMask  = mod4Mask
               [appName =? "emacs" --> doRectFloat (W.RationalRect 0.25 0.25 0.5 0.5)]  -}
 
 
- myStartupHook = do
+myStartupHook = do
 
 {-spawnAndDo manageSpawn "emacs" -}
 
