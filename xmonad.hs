@@ -55,8 +55,8 @@ myManageHook = manageSpawn <+> manageHook def
 myStartupHook = do
                 spawnOn "1" "emacs"
                 spawnOn "2" "brave"
-                spawnAndDo (doRectFloat (W.RationalRect 0.25 0.25 0.5 0.5) <+> doShift '1') "emacs"
                 spawnOn "3" "urxvt"
+                spawnAndDo (doRectFloat (W.RationalRect 0.25 0.25 0.5 0.5) <+> doShift 1) "emacs"
 
 {-spawnOn "4" "urxvt ~/echo.sh" -}
 
