@@ -14,5 +14,5 @@ xrdb ~/.Xresources
 #git add *
 #git commit -a -m "dwm update"
 #git push
-#cd ~ 
+cd ~ 
 exec bash
