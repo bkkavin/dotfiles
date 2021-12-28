@@ -49,7 +49,7 @@ defaults = def
 myLayoutHook = noBorders(Full) |||  ThreeCol 1 (3/100) (1/3) {-||| ThreeColMid 1 (3/100) (1/2) -} ||| magnifier (Tall 1 (3/100) (1/2)) 
 myTerminal = "urxvt"
 myModMask  = mod4Mask
- myManageHook = manageHook def 
+ myManageHook = manageHook def <+> manageSpawn 
 {- myManageHook =+ {- manageSpawn <+> -}  manageHook def {- <+> composeOne -}
               [appName =? "emacs" --> doRectFloat (W.RationalRect 0.25 0.25 0.5 0.5)]  -}
 
