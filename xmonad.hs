@@ -39,10 +39,10 @@ defaults = def
 
       -- hooks, layouts
         layoutHook         = myLayoutHook,
-       manageHook         = myManageHook
+       manageHook         = myManageHook,
        {- handleEventHook    = myEventHook 
        logHook            = myLogHook -}
-        startupHook        = myStartupHook
+        startupHook    = myStartupHook
         }
 
 
