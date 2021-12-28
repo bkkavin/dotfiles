@@ -56,6 +56,7 @@ myStartupHook = do
                 spawnOn "1" "emacs"
                 spawnOn "2" "brave"
                 spawnOn "3" "urxvt"
+                spawnAndDo (RectFloat W.RationalRect 0.25 0.25 0.5 0.5] <+> doShift "1") "emacs"
 
 {-spawnOn "4" "urxvt ~/echo.sh" -}
 
@@ -63,7 +64,6 @@ myStartupHook = do
 
    
 
-manageDashboard = composeAll 
-spawnAndDo (RectFloat W.RationalRect 0.25 0.25 0.5 0.5] <+> doShift "1") "emacs"
+{- manageDashboard = composeAll  -}
 
 
