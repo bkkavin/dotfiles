@@ -5,14 +5,14 @@ cp ~/git/dotfiles/.Xmodmap ~
 cp ~/git/dotfiles/.Xresources ~
 cp ~/git/dotfiles/xmonad.hs ~/.config/xmonad
 #cp ~/Scripts/* ~/git/dotfiles/
-cd ~/git/dotfiles/
-eval 'ssh-agent -s'
-git commit -a -m "dotfiles update"
-git push
-xrdb ~/.Xresources
+#cd ~/git/dotfiles/
+#eval 'ssh-agent -s'
+#git commit -a -m "dotfiles update"
+#git push
+#xrdb ~/.Xresources
 #cd ~/git/dwm/dwm/
 #git add *
 #git commit -a -m "dwm update"
 #git push
-cd ~ 
-exec bash
+#cd ~ 
+#exec bash
