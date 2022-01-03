@@ -17,13 +17,14 @@ import XMonad.Layout.Fullscreen
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Magnifier
 import XMonad.Hooks.ManageHelpers
-
-
-
+import XMonad.Layout.CenteredMaster
+import XMonad.Layout.Grid
+import XMonad.Layout.Renamed
+import XMonad.Util.SpawnOnce
+import XMonad.Util.Run
 
 main :: IO ()
-main = xmonad defaults
-defaults = def 
+main =  xmonad def        
        {terminal           = myTerminal,
         {- focusFollowsMouse  = myFocusFollowsMouse,
         clickJustFocuses   = myClickJustFocuses,
@@ -38,7 +39,7 @@ defaults = def
         mouseBindings      = myMouseBindings,-}
 
       -- hooks, layouts
-        layoutHook         = myLayoutHook,
+       layoutHook         = myLayoutHook,
        manageHook         = myManageHook,
        {- handleEventHook    = myEventHook 
        logHook            = myLogHook -}
@@ -46,7 +47,7 @@ defaults = def
         }
 
 
-myLayoutHook =  noBorders(Full) ||| ThreeColMid 1 (3/100) (1/2) ||| magnifier (Tall 1 (3/100) (1/2)) ||| ThreeCol 1 (3/100) (1/3) 
+myLayoutHook = ThreeCol 1 (3/100) (1/2)  |||  noBorders(Full)  ||| centerMaster Grid   
 myTerminal = "urxvt"
 myModMask  = mod4Mask
 myManageHook = manageSpawn <+> manageHook def 
@@ -56,7 +57,7 @@ myStartupHook = do
                 spawnOn "2" "emacs"
                 spawnOn "3" "brave"
                 spawnOn "4" "urxvt"
-                spawnAndDo (doRectFloat (W.RationalRect 0.25 0.25 0.5 0.5) <+> doShift "1") "emacs"
+                spawnAndDo (doRectFloat (W.RationalRect 0.05 0.1 0.4 0.8) <+> doShift "1") "emacs" 
 
 
 

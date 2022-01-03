@@ -1,5 +1,6 @@
 cp ~/git/dotfiles/.bashrc ~
-cp ~/git/dotfiles/init.el ~/.emacs.d/init.el 
+cp ~/git/dotfiles/init.el ~/.emacs.d/ 
+cp ~/git/dotfiles/init_bkk.org ~/.emacs.d/ 
 cp ~/git/dotfiles/dot#.sh ~
 cp ~/git/dotfiles/.Xmodmap ~
 cp ~/git/dotfiles/.Xresources ~
