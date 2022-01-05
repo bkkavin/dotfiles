@@ -11,7 +11,7 @@ cd ~
 mkdir -p ~/.config/xmonad && cd ~/.config/xmonad 
 git clone https://github.com/xmonad/xmonad
 git clone https://github.com/xmonad/xmonad-contrib
-#sudo pacman -S stack              # Arch
+sudo pacman -S stack              # Arch
 stack init
 stack install
 
