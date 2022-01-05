@@ -8,7 +8,7 @@ cp ~/git/dotfiles/xmonad.hs ~/.config/xmonad
 cp ~/git/dotfiles/.bash_profile ~
 cp ~/git/dotfiles/.xinitrc ~
 cp ~/git/dotfiles/fresh.sh ~
-
+cp ~/git/dotfiles/.xmobarrc ~
 #cp ~/Scripts/* ~/git/dotfiles/
 #cd ~/git/dotfiles/
 #eval 'ssh-agent -s'
