@@ -1,4 +1,5 @@
-sudo pacman -S openssh openssl emacs base-devel virtualbox-guest-utils gparted xorg-server xorg-apps xorg-xinit xorg-xmessage  libx11 libxft libxinerama libxrandr libxss pkgcon stack brave-bin rxvt-unicode
+sudo pacman -Syu
+sudo pacman -S openssh openssl emacs base-devel virtualbox-guest-utils gparted xorg-server xorg-apps xorg-xinit xorg-xmessage  libx11 libxft libxinerama libxrandr libxss pkgcon stack brave-bin rxvt-unicode 
 
 # cd ~
 # mkdir git && cd git 
