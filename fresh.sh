@@ -14,7 +14,7 @@ sudo pacman -S openssh \
      libxinerama \
      libxrandr \
      libxss \
-     pkgcon \
+     pkgconf \
      stack \
      brave-bin \
      rxvt-unicode \
