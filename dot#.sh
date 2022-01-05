@@ -5,6 +5,8 @@ cp ~/git/dotfiles/dot#.sh ~
 cp ~/git/dotfiles/.Xmodmap ~
 cp ~/git/dotfiles/.Xresources ~
 cp ~/git/dotfiles/xmonad.hs ~/.config/xmonad
+cp ~/git/dotfiles/.bash_profile ~
+cp ~/git/dotfiles/.xinitrc ~
 #cp ~/Scripts/* ~/git/dotfiles/
 #cd ~/git/dotfiles/
 #eval 'ssh-agent -s'
