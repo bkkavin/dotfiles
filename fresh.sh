@@ -18,7 +18,8 @@ sudo pacman -S openssh \
      stack \
      brave-bin \
      rxvt-unicode \
-     make 
+     make \
+     xorg
 
 mkdir -p ~/.config/xmonad && cd ~/.config/xmonad 
 # cd ~
