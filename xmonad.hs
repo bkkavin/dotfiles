@@ -61,9 +61,7 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
 
 myStartupHook = do
                 spawnAndDo (doRectFloat (W.RationalRect 0.1 0.1 0.4 0.8) <+> doShift "1") "emacs" 
-         --     spawnOn "2" "emacs"
                 spawnOn "2" "brave"
-         --     spawnOn "4" "urxvt"
                 spawnAndDo (doRectFloat (W.RationalRect 0.55 0.1 0.4 0.8) <+> doShift "1") "urxvt -hold" 
 
 
