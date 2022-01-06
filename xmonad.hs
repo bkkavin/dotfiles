@@ -70,8 +70,8 @@ myStartupHook = do
 myKeys :: [(String, X ())]
 myKeys = 
         [ ("M-C-r", spawn "xmonad --recompile")       -- Recompiles xmonad
-        , ("M-s t", namedScratchpadAction myScratchPads "terminal")
-        , ("M-s e", namedScratchpadAction myScratchPads "ecx")
+        , ("C-M t", namedScratchpadAction myScratchPads "terminal")
+        , ("C-M e", namedScratchpadAction myScratchPads "ecx")
 
         ]
 
