@@ -40,8 +40,8 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                 , NS "ecx" spawnECX findECX manageECX 
                 ]
   where
-    spawnTerm  = "~/urxvtc.sh -title scratchpad -hold"
-    findTerm   = title =? "scratchpad"
+    spawnTerm  = "~/urxvtc.sh -name scratchpad"
+    findTerm   = resource =? "scratchpad"
     manageTerm = customFloating $ W.RationalRect l t w h
                where
                  h = 0.9
