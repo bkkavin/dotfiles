@@ -32,34 +32,44 @@ myManageHook = manageSpawn <+> manageHook def
 
 
 myStartupHook = do
+                spawnAndDo (doRectFloat (W.RationalRect 0.1 0.1 0.4 0.8)) "emacs" 
                 spawnOn "2" "emacs"
                 spawnOn "3" "brave"
                 spawnOn "4" "urxvt"
-                spawnAndDo (doRectFloat (W.RationalRect 0.05 0.1 0.4 0.8) <+> doShift "1") "emacs" 
+                spawnOn "1" "~/urxvtc.sh -hold -e ~/fun.sh" 
+                spawnOn "5" "~/ecx.sh"
+
+
+
 
 
 main :: IO ()
 main = do
 xmproc <- spawnPipe "xmobar -x 0 ~/.xmobarrc"
 xmonad def
-       {terminal           = myTerminal,
-        {- focusFollowsMouse  = myFocusFollowsMouse,
-        clickJustFocuses   = myClickJustFocuses,
-        borderWidth        = myBorderWidth,-}
-        modMask            = myModMask,
-        {-workspaces         = myWorkspaces,
-        normalBorderColor  = myNormalBorderColor,
-        focusedBorderColor = myFocusedBorderColor,
+       {terminal            = myTerminal
+  {-  ,  focusFollowsMouse  = myFocusFollowsMouse
+      ,  clickJustFocuses   = myClickJustFocuses
+      ,  borderWidth        = myBorderWidth            -}
+      ,  modMask            = myModMask
+  {-  ,  workspaces         = myWorkspaces
+      ,  normalBorderColor  = myNormalBorderColor
+      ,  focusedBorderColor = myFocusedBorderColor     
 
       -- key bindings
-        keys               = myKeys,
-        mouseBindings      = myMouseBindings,-}
+     ,  keys               = myKeys
+      , mouseBindings      = myMouseBindings           -}
 
       -- hooks, layouts
-       layoutHook         = myLayoutHook,
-       manageHook         = myManageHook,
-       {- handleEventHook    = myEventHook 
-       logHook            = myLogHook -}
-        startupHook    = myStartupHook
-        }
+      , layoutHook         = myLayoutHook
+      , manageHook         = myManageHook
+  {-  , handleEventHook    = myEventHook 
+      , logHook            = myLogHook                  -}
+      ,  startupHook       = myStartupHook
+       }
 
+  {-  spawnAndDo (doRectFloat (W.RationalRect 0.05 0.1 0.4 0.8) <+> doShift "1") "emacs" 
+                spawnOnce "urxvtd -q -o -f" 
+                spawnAndDo (doRectFloat (W.RationalRect 0.5 0.1 0.4 0.8) <+> doShift "1") "urxvtd -q -o -f  && urxvtc -hold -e ~/fun.sh"  
+               spawnOn "1" "emacsclient -a "" -nc -F '(quote (name . \"emacs-bkk\"))'" -}
+            
