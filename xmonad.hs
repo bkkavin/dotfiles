@@ -60,18 +60,18 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
 
 
 myStartupHook = do
-                spawnAndDo (doRectFloat (W.RationalRect 0.1 0.1 0.4 0.8) <+> doShift "1") "emacs" 
+                spawnAndDo (doRectFloat (W.RationalRect 0.1 0.1 0.4 0.8) <+> doShift "1") "emacsclient -nc" 
                 spawnOn "2" "emacs"
                 spawnOn "3" "brave"
                 spawnOn "4" "urxvt"
-     --         spawnOn "1" "~/urxvtc.sh -hold -e ~/fun.sh" 
+                spawnAndDo (doRectFloat (W.RationalRect 0.55 0.1 0.4 0.8) <+> doShift "1") "urxvt -hold" 
 
 
 myKeys :: [(String, X ())]
 myKeys = 
         [ ("M-C-r", spawn "xmonad --recompile")       -- Recompiles xmonad
-        , ("C-M t", namedScratchpadAction myScratchPads "terminal")
-        , ("C-M e", namedScratchpadAction myScratchPads "ecx")
+        , ("C-M-t", namedScratchpadAction myScratchPads "terminal")
+        , ("C-M-e", namedScratchpadAction myScratchPads "ecx")
 
         ]
 
