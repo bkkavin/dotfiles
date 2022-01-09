@@ -33,6 +33,9 @@ import XMonad.Util.NamedScratchpad
 myLayoutHook = ThreeCol 1 (3/100) (1/2)  |||  noBorders(Full)  ||| centerMaster Grid   
 myTerminal = "urxvt"
 myModMask  = mod4Mask
+myNormalBorderColor =  "#F7F7F7"
+myFocusedBorderColor =  "#334257" --"#EEEEEE"
+
 myManageHook = manageSpawn <+> manageHook def<+> namedScratchpadManageHook myScratchPads
 
 myScratchPads :: [NamedScratchpad]
@@ -42,21 +45,22 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
   where
     spawnTerm  = "~/urxvtc.sh -name scratchpad"
     findTerm   = resource =? "scratchpad"
-    manageTerm = customFloating $ W.RationalRect l t w h
+    manageTerm = customFloating $ W.RationalRect x y w h
                where
                  h = 0.9
                  w = 0.9
-                 t = 0.95 -h
-                 l = 0.95 -w
+                 y = (1.025 - h)/2
+                 x = (1 - w)/2
                
     spawnECX = "./ecx.sh"
     findECX  = title =? "ecx"
-    manageECX = customFloating $ W.RationalRect l t w h
+    manageECX = customFloating $ W.RationalRect x y w h
                where
-                 h = 0.9
-                 w = 0.9
-                 t = 0.95 -h
-                 l = 0.95 -w
+                 h = 0.98
+                 w = 0.98
+                 y = (1.025 - h) / 2
+                 x = (1 - w) / 2
+		 
 
 
 myStartupHook = do
@@ -84,9 +88,9 @@ xmonad  $ def
       ,  clickJustFocuses   = myClickJustFocuses
       ,  borderWidth        = myBorderWidth            -}
       ,  modMask            = myModMask
-  {-  ,  workspaces         = myWorkspaces
+  --  ,  workspaces         = myWorkspaces
       ,  normalBorderColor  = myNormalBorderColor
-      ,  focusedBorderColor = myFocusedBorderColor    -} 
+      ,  focusedBorderColor = myFocusedBorderColor    
 
       -- key bindings
   --  , keys               = myKeys

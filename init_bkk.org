@@ -57,24 +57,23 @@
                       org-confirm-babel-evaluate nil
                       org-edit-src-content-indentation 0)
                           (use-package ivy
-                        :diminish
-                        :bind (("C-s" . swiper)
-                               :map ivy-minibuffer-map
-                               ("TAB" . ivy-alt-done)	
-                               ("C-l" . ivy-alt-done)
-                               ("C-j" . ivy-next-line)
-                               ("C-k" . ivy-previous-line)
-                               :map ivy-switch-buffer-map
-                               ("C-k" . ivy-previous-line)
-                               ("C-l" . ivy-done)
-                               ("C-d" . ivy-switch-buffer-kill)
-                               :map ivy-reverse-i-search-map
-                               ("C-k" . ivy-previous-line)
-                               ("C-d" . ivy-reverse-i-search-kill))
-                        :config
-                        (ivy-mode 1))
-
-                      (global-set-key (kbd "C-M-b") 'counsel-ibuffer)
+  :diminish
+  :bind (("C-s" . swiper)
+         :map ivy-minibuffer-map
+         ("TAB" . ivy-alt-done)
+         ("C-l" . ivy-alt-done)
+         ("C-j" . ivy-next-line)
+         ("C-k" . ivy-previous-line)
+         :map ivy-switch-buffer-map
+         ("C-k" . ivy-previous-line)
+         ("C-l" . ivy-done)
+         ("C-d" . ivy-switch-buffer-kill)
+         :map ivy-reverse-i-search-map
+         ("C-k" . ivy-previous-line)
+         ("C-d" . ivy-reverse-i-search-kill))
+  :config
+  (ivy-mode 1))
+                      (global-set-key (kbd "C-M-w") 'counsel-ibuffer)
                       (setq evil-undo-system 'undo-tree)
                       (use-package doom-modeline
                         :ensure t
@@ -156,9 +155,9 @@
                       :config
                        (evil-mode 1) 
                        (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state) 
-                       (define-key evil-insert-state-map (kbd "C-m") 'evil-delete-backward-char-and-join)
+                       (define-key evil-insert-state-map (kbd "C-m") 'delete-char)
                        (define-key evil-insert-state-map (kbd "RET") 'newline)
-                       (define-key evil-normal-state-map (kbd "u")  'evil-undo)
+                       (define-key evil-normal-state-map (kbd "u")  'undo-only)
                        (define-key evil-normal-state-map (kbd "C-r") 'evil-redo)
                        ;; Use visual line motions even outside of visual-line-mode buffers
                         (evil-global-set-key 'motion "j" 'evil-next-visual-line)

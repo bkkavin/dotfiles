@@ -18,3 +18,9 @@ pacman -Qqdt | sudo pacman -Rs -
 sudo rm /var/lib/pacman/db.lck
 clear 
 neofetch
+
+alias pman = "sudo pacman -"
+ecx()
+{
+emacsclient -a "" -nc -F "(quote (name . \"ecx\"))"
+}
