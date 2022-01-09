@@ -12,15 +12,16 @@ PS1='[\u@\h \W]\$ '
 #exec ssh-agent bash
 
 #/home/su/Scripts/fun.sh 
-sudo pacman -Syu
-pacman -Syy archlinux-keyring
+sudo pacman -Syuc
+pacman -U --needed archlinux-keyring
 pacman -Qqdt | sudo pacman -Rs -
 sudo rm /var/lib/pacman/db.lck
 clear 
 neofetch
 
-alias pman = "sudo pacman -"
+alias pman="sudo pacman"
 ecx()
 {
-emacsclient -a "" -nc -F "(quote (name . \"ecx\"))"
+    args=("$@")
+emacsclient -a "" -nc -F "(quote (name . \" $1\"))" -e "($2)"
 }
