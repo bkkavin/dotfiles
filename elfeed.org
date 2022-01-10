@@ -1,6 +1,6 @@
-* elfeed                                                         :elfeed:
+* elfeed                                               :elfeed:
 ** Blogs                                                                :blog: 
-*** EMACS                                                            :emacs:
+*** Emacs                                                             :emacs:
 **** [[https://planet.emacslife.com/atom.xml][Planet Emacs]]
 ** youtube                                                               :yt:
 ** Reddit                                                            :reddit:
