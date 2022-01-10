@@ -1,0 +1,9 @@
+*ELFEED       :elfeed:
+**Blogs    :blogs:
+ ***Emacs  :emacs:
+ **** https://planet.emacslife.com/atom.xml
+**Youtube  :yt:
+**Reddit   :reddit:
+    https://www.reddit.com/r/emacs/top/.rss?sort=top&t=week
+**Twitter
+
