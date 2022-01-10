@@ -1,8 +1,8 @@
-* elfeed                                                :elfeed:
-** Blogs                                                               :blog: 
-  *** EMACS                                                              :emacs:
-  **** HTTPS://PLANET.EMACSLIFE.COM/ATOM.XML
-** Youtube                                                               :yt:
+* elfeed                                                         :elfeed:
+** Blogs                                                                :blog: 
+*** EMACS                                                            :emacs:
+**** [[https://planet.emacslife.com/atom.xml][Planet Emacs]]
+** youtube                                                               :yt:
 ** Reddit                                                            :reddit:
     https://www.reddit.com/r/emacs/top/.rss?sort=top&t=week
 ** Twitter
