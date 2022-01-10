@@ -12,7 +12,9 @@ PS1='[\u@\h \W]\$ '
 #exec ssh-agent bash
 
 #/home/su/Scripts/fun.sh 
-sudo pacman -Syuc
+yay
+sudo pacman -Syu
+pacman -Sc
 pacman -U --needed archlinux-keyring
 pacman -Qqdt | sudo pacman -Rs -
 sudo rm /var/lib/pacman/db.lck

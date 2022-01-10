@@ -33,9 +33,9 @@ import XMonad.Util.NamedScratchpad
 myLayoutHook = ThreeCol 1 (3/100) (1/2)  |||  noBorders(Full)  ||| centerMaster Grid   
 myTerminal = "urxvt"
 myModMask  = mod4Mask
-myNormalBorderColor =  "#F7F7F7"
+myNormalBorderColor =  "#000000" --"#F7F7F7"
 myFocusedBorderColor =  "#334257" --"#EEEEEE"
-
+myBorderWidth = 3 
 myManageHook = manageSpawn <+> manageHook def<+> namedScratchpadManageHook myScratchPads
 
 myScratchPads :: [NamedScratchpad]
@@ -85,8 +85,8 @@ xmproc <- spawnPipe "xmobar -x 0 ~/.xmobarrc"
 xmonad  $ def
       {terminal            = myTerminal
   {-  ,  focusFollowsMouse  = myFocusFollowsMouse
-      ,  clickJustFocuses   = myClickJustFocuses
-      ,  borderWidth        = myBorderWidth            -}
+      ,  clickJustFocuses   = myClickJustFocuses      -}
+      ,  borderWidth        = myBorderWidth            
       ,  modMask            = myModMask
   --  ,  workspaces         = myWorkspaces
       ,  normalBorderColor  = myNormalBorderColor

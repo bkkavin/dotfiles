@@ -57,22 +57,23 @@
                       org-confirm-babel-evaluate nil
                       org-edit-src-content-indentation 0)
                           (use-package ivy
-  :diminish
-  :bind (("C-s" . swiper)
-         :map ivy-minibuffer-map
-         ("TAB" . ivy-alt-done)
-         ("C-l" . ivy-alt-done)
-         ("C-j" . ivy-next-line)
-         ("C-k" . ivy-previous-line)
-         :map ivy-switch-buffer-map
-         ("C-k" . ivy-previous-line)
-         ("C-l" . ivy-done)
-         ("C-d" . ivy-switch-buffer-kill)
-         :map ivy-reverse-i-search-map
-         ("C-k" . ivy-previous-line)
-         ("C-d" . ivy-reverse-i-search-kill))
-  :config
-  (ivy-mode 1))
+                            :diminish
+                            :bind (("C-s" . swiper)
+                            :map ivy-minibuffer-map
+                            ("TAB" . ivy-alt-done)
+                            ("C-l" . ivy-alt-done)
+                            :map ivy-minibuffer-map
+                            ("C-j" . ivy-next-line)
+                            ("C-k" . ivy-previous-line)
+                            :map ivy-switch-buffer-map
+                            ("C-k" . ivy-previous-line)
+                            ("C-l" . ivy-done)
+                            ("C-d" . ivy-switch-buffer-kill)
+                     :map ivy-reverse-i-search-map
+                    ("C-k" . ivy-previous-line)
+                    ("C-d" . ivy-reverse-i-search-kill))
+                    :config
+                    (ivy-mode 1))
                       (global-set-key (kbd "C-M-w") 'counsel-ibuffer)
                       (setq evil-undo-system 'undo-tree)
                       (use-package doom-modeline
@@ -204,17 +205,17 @@
                       (use-package forge)
 
 
+
+                      (defun bkk/org-mode-setup ()
+                        (org-indent-mode
                       (message (emacs-init-time))
                       (add-hook 'after-init-hook (lambda () (message (emacs-init-time))))
                       (global-undo-tree-mode)
-                      (add-hook ’evil-local-mode-hook ’turn-on-undo-tree-mode)) 
+                      (add-hook ’evil-local-mode-hook ’turn-on-undo-tree-mode) 
                       (add-hook 'after-save-hook
                         'executable-make-buffer-file-executable-if-script-p)
 
-
-
-                      (defun bkk/org-mode-setup ()
-                        (org-indent-mode)
+)
                         (variable-pitch-mode 1)
                         (visual-line-mode 1))
 
@@ -300,14 +301,14 @@
                   ;;           org-roam-ui-open-on-start nil))
 
                         (use-package websocket
-        :after org-roam
-        :straight (:host github :repo "ahyatt/emacs-websocket" :branch "main")
-        )
+                          :after org-roam
+                          :straight (:host github :repo "ahyatt/emacs-websocket" :branch "main")
+                        )
 
                         (use-package simple-httpd
-       :after org-roam
-       )
-
+                          :after org-roam
+                       )
+ 
                          (use-package org-roam-ui
                             :straight
                             (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
@@ -322,9 +323,19 @@
               org-roam-ui-update-on-save t
               org-roam-ui-open-on-start nil))
 
-
-
-
+               (use-package elfeed
+               :ensure t
+               :config
+               (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
+               elfeed-show-entry-switch 'display-buffer)
+               :bind
+               ("C-x w" . elfeed )) 
+ 
+               (use-package elfeed-org
+               :ensure t
+               :config
+               (setq elfeed-show-entry-switch 'display-buffer)
+               (setq rmh-elfeed-org-files (list "elfeed.org")))
 
 
 
@@ -383,6 +394,9 @@
 
 
 #+END_SRC
+
+#+RESULTS:
+: t
  
 
 

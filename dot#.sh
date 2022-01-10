@@ -13,7 +13,7 @@ cp ~/git/dotfiles/fun.sh ~
 cp ~/git/dotfiles/urxvtc.sh ~
 cp ~/git/dotfiles/ecx.sh ~
 cp ~/git/dotfiles/gdot.sh ~
-
+cp ~/git/dotfiles/elfeed.org ~/.emacs.d/
 cd ~/git/dotfiles/
 git status
 cd ~
