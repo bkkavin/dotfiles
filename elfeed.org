@@ -1,11 +1,8 @@
-* elfeed                                               :elfeed:
-** [[https://planet.emacslife.com/atom.xml][Planet Emacs]]
-** [[https://www.reddit.com/r/emacs/top/.rss?sort=top&t=week][Emacs Top Week]]
-* Blogs                                                                :blog: 
-*** Emacs                                                             :emacs:
-**** [[https://planet.emacslife.com/atom.xml][Planet Emacs]]
+* elfeed                                                             :elfeed:
+** Blogs                                                              :blog: 
+*** Emacs                                                         :emacs:
+**** [[https://planet.emacslife.com/atom.xml][Planet Emacs]]   
 ** youtube                                                               :yt:
-** Reddit                                                            :reddit:
-    [[https://www.reddit.com/r/emacs/top/.rss?sort=top&t=week][Emacs Top Week]]
+** Reddit                                                           :reddit:
+*** [[https://www.reddit.com/r/emacs/top/.rss?sort=top&t=week][Emacs Top Week]]
 ** Twitter
-

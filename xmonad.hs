@@ -67,7 +67,7 @@ myStartupHook = do
                 spawnAndDo (doRectFloat (W.RationalRect 0.1 0.1 0.4 0.8) <+> doShift "1") "emacs" 
                 spawnOn "2" "brave"
                 spawnAndDo (doRectFloat (W.RationalRect 0.55 0.1 0.4 0.8) <+> doShift "1") "urxvt -hold" 
-
+                spawnOnce "emacs --daemon=xmonad"
 
 myKeys :: [(String, X ())]
 myKeys = 
