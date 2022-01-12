@@ -36,3 +36,13 @@ edl()
 {
     ls /run/user/1000/emacs
 }
+
+dx()
+{
+    ~/dot#.sh
+}
+ 
+gx()
+{
+    ~/gdot.sh
+}
