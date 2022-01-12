@@ -68,7 +68,7 @@ myStartupHook = do
                 spawnOn "2" "brave"
                 spawnAndDo (doRectFloat (W.RationalRect 0.55 0.1 0.4 0.8) <+> doShift "1") "urxvt -hold" 
                 spawnOnce "emacs --daemon=xmonad"
-
+ a              spawnOnce " urxvtd -q -o -f "
 myKeys :: [(String, X ())]
 myKeys = 
         [ ("M-C-r", spawn "xmonad --recompile")       -- Recompiles xmonad
