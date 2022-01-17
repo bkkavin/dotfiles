@@ -42,7 +42,7 @@ myManageHook = manageSpawn <+> manageHook def <+> namedScratchpadManageHook mySc
         [ [(className =? x <||> title =? x <||> resource =? x) --> doShift "2" | x <- my2Shifts]
         ])
         where
-        my2Shifts = ["Brave"]
+        my2Shifts = ["brave-browser"]
 
 
 
