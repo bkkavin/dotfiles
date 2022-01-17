@@ -38,9 +38,9 @@ myModMask  = mod4Mask
 myNormalBorderColor =  "#000000" --"#F7F7F7"
 myFocusedBorderColor =  "#334257" --"#EEEEEE"
 myBorderWidth = 3 
-myManageHook = manageSpawn <+> manageHook def <+> namedScratchpadManageHook myScratchPads <+> composeAll . concat  $
+myManageHook = manageSpawn <+> manageHook def <+> namedScratchpadManageHook myScratchPads <+> (composeAll . concat  $
         [ [(className =? x <||> title =? x <||> resource =? x) --> doShift "2" | x <- my2Shifts]
-        ]
+        ])
         where
         my2Shifts = ["Brave"]
 
