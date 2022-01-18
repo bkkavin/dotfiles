@@ -16,11 +16,14 @@ pp()
 {   sudo rm /var/lib/pacman/db.lck
     yay
     sudo pacman -Syyu
-    sudo pacman -Sc
-    pacman -U --needed archlinux-keyring
-    pacman -Qtdq | sudo pacman -Rns -
+      pacman -U --needed archlinux-keyring
     clear
     neofetch
+}
+cln()
+{
+    sudo pacman -Sc
+    pacman -Qtdq | sudo pacman -Rns -
 }
 
 neofetch
