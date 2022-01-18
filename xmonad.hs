@@ -74,16 +74,22 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
 
 myStartupHook = do
         --      spawnAndDo (doRectFloat (W.RationalRect 0.1 0.1 0.4 0.8)) "emacs"
-                spawnAndDo (doShift "1") "emacs"
-                spawnAndDo (doShift "1") "urxvt"
+        --      spawnAndDo (doShift "1") "emacs"
+        --      spawnAndDo (doShift "1") "urxvt"
+                spawnAndDo (doRectFloat (W.RationalRect 0.1 0.1 0.4 0.8)) "brave"
 
-                spawnAndDo (doShift "2") "brave"
+        --      spawnAndDo (doShift "2") "brave"    
         --      spawnAndDo (doRectFloat (W.RationalRect 0.55 0.1 0.4 0.8)) "urxvt"
                 spawnOnce "emacs --daemon=xmonad"
                 spawnOnce " urxvtd -q -o -f "
+
+
+
+
+
 myKeys :: [(String, X ())]
 myKeys = 
-        [ ("M-C-r", spawn "xmonad --recompile")       -- Recompiles xmonad
+        [ ("C-M4-r", spawn "xmonad --recompile")       -- Recompiles xmonad
         , ("C-M4-t", namedScratchpadAction myScratchPads "terminal")
         , ("C-M4-s", namedScratchpadAction myScratchPads "ecx")
         , ("C-M4-m", sendMessage $ ToggleGaps)     
