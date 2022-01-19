@@ -49,3 +49,5 @@ gx()
 {
     ~/gdot.sh
 }
+#xwallpaper --zoom ~/Downloads/wallpapers/sunset-rvb.jpg
+

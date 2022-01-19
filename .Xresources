@@ -1,7 +1,7 @@
 URxvt.font: xft:monospace:size=10
 URxvt.scrollBar : false
-
-
+URxvt.depth : 32
+URxvt.background : [40]#000000
 !! Colorscheme
 
 ! special

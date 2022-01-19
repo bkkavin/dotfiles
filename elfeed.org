@@ -1,4 +1,4 @@
-* elfeed                                                             :elfeed:
+* elfeed                                             :elfeed:
 ** Blogs                                                              :blog: 
 *** Emacs                                                         :emacs:
 **** [[https://planet.emacslife.com/atom.xml][Planet Emacs]]   

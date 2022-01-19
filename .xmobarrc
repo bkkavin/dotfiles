@@ -1,10 +1,11 @@
    Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
        , additionalFonts = []
-       , borderColor = "black"
-       , border = TopB
+       , borderColor = "#334257"
+       , border = NoBorder
+       , borderWidth = 0
        , bgColor = "black"
        , fgColor = "grey"
-       , alpha = 255
+       , alpha = 0
        , position = Top
        , textOffset = -1
        , iconOffset = -1

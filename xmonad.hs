@@ -31,14 +31,14 @@ import XMonad.Util.EZConfig
 import XMonad.Util.NamedScratchpad
 --import XMonad.Hooks.EwmhDesktops
 
-myLayoutHook = gaps [(U,20) , (D,20) , (L,20) , (R,20)] $ ThreeCol 1 (3/100) (1/2)  |||  Full  ||| centerMaster Grid   
+myLayoutHook =  smartBorders $ gaps [(U,20) , (D,20) , (L,20) , (R,20)] $ avoidStruts (ThreeCol 1 (3/100) (1/2)  |||  Full  ||| centerMaster Grid  )
 
 myTerminal = "urxvt"
 myModMask  = mod4Mask
 myNormalBorderColor =  "#000000" --"#F7F7F7"
 myFocusedBorderColor =  "#334257" --"#EEEEEE"
 myBorderWidth = 3 
-myManageHook = manageSpawn <+> manageHook def <+> namedScratchpadManageHook myScratchPads <+> (composeAll . concat  $
+myManageHook = manageSpawn <+> manageHook def <+> namedScratchpadManageHook myScratchPads <+> manageDocks <+> (composeAll . concat  $
         [ [(className =? x <||> title =? x <||> resource =? x) --> doShift "2" | x <- my2Shifts]
         ])
         where
@@ -76,20 +76,21 @@ myStartupHook = do
         --      spawnAndDo (doRectFloat (W.RationalRect 0.1 0.1 0.4 0.8)) "emacs"
         --      spawnAndDo (doShift "1") "emacs"
         --      spawnAndDo (doShift "1") "urxvt"
-                spawnAndDo (doRectFloat (W.RationalRect 0.1 0.1 0.4 0.8)) "brave"
+        --      spawnAndDo (doRectFloat (W.RationalRect 0.1 0.1 0.4 0.8) <+>doShift "1") "brave"
 
-        --      spawnAndDo (doShift "2") "brave"    
+                spawnAndDo (doShift "2") "brave"    
         --      spawnAndDo (doRectFloat (W.RationalRect 0.55 0.1 0.4 0.8)) "urxvt"
                 spawnOnce "emacs --daemon=xmonad"
                 spawnOnce " urxvtd -q -o -f "
 
+                spawnOnce "xwallpaper --zoom ~/Downloads/wallpapers/sunset-rvb.jpg"
 
-
+ 
 
 
 myKeys :: [(String, X ())]
 myKeys = 
-        [ ("C-M4-r", spawn "xmonad --recompile")       -- Recompiles xmonad
+        [ ("C-M4-r", spawn "urxvtc -hold -e xmonad --recompile")       -- Recompiles xmonad
         , ("C-M4-t", namedScratchpadAction myScratchPads "terminal")
         , ("C-M4-s", namedScratchpadAction myScratchPads "ecx")
         , ("C-M4-m", sendMessage $ ToggleGaps)     

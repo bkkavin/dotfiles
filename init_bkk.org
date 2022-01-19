@@ -4,6 +4,7 @@
                       (scroll-bar-mode -1)        ; Disable visible scrollbar
                       (tool-bar-mode -1)          ; Disable the toolbar
                       (tooltip-mode -1)           ; Disable tooltips
+
                       (menu-bar-mode -1)         ; Disable the menu bar
                       (set-fringe-mode 10)        ; Give some breathing room
 
@@ -18,24 +19,17 @@
                       (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
                       ;; Initialize package sources
-                      (require 'package)
-
-                      (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                                               ("org" . "https://orgmode.org/elpa/")
-                                               ("elpa" . "https://elpa.gnu.org/packages/")
-                                               ("ELPA" . "http://tromey.com/elpa/")))
+                       (require 'package)
+                       (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                                        ;       ("org" . "https://orgmode.org/elpa/")
+                                              ("elpa" . "https://elpa.gnu.org/packages/")))
 
                       (package-initialize)
                       (unless package-archive-contents
-                       (package-refresh-contents t))
+                      (package-refresh-contents))
 
-
-                      ;; Initialize use-package on non-Linux platforms
-                      (unless (package-installed-p 'use-package)
-                         (package-install 'use-package))
-
-                      (require 'use-package)
-                      (setq use-package-always-ensure t)
+                       (require 'use-package)
+                       (setq use-package-always-ensure t)                     
 
                       (column-number-mode)
                       (global-display-line-numbers-mode  
@@ -76,12 +70,12 @@
                     (ivy-mode 1))
                       ;(global-set-key (kbd "C-M-w") 'counsel-ibuffer)
                       (setq evil-undo-system 'undo-tree)
+                      (use-package all-the-icons)
                       (use-package doom-modeline
                         :ensure t
                         :init (doom-modeline-mode 1)
                         :custom ((doom-modeline-height 15))
                         :config  (setq doom-modeline-icon t))
-                      (use-package all-the-icons)
                       (use-package doom-themes)
                       :init(load-theme 'doom-ir-black t)
 
@@ -197,13 +191,13 @@
                       (use-package counsel-projectile
                         :config (counsel-projectile-mode))
 
+                      (use-package forge)
 
                       (use-package magit
                         :custom
                         (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
-                      (use-package forge)
-
+                     
 
 
                       (defun bkk/org-mode-setup ()
@@ -242,9 +236,15 @@
 
                       (use-package org
                         :hook (org-mode . bkk/org-mode-setup)
+                        :pin manual
                         :config
-                       (setq org-ellipsis " ▾")
+                        (setq org-ellipsis " ▾")
                         (bkk/org-font-setup))
+                       ;:demand t
+                       ; :load-path "~/.emacs.d/elpa/org-mode/lisp")
+                 
+		     
+
 
                       ;; (org-babel-load-file
                       ;;  (expand-file-name "init_bkk.org"
@@ -340,9 +340,7 @@
                 ;;   '("http://nullprogram.com/feed/"
                 ;;    "https://planet.emacslife.com/atom.xml"))
 
-
-
-
+               
 
 
 
