@@ -18,15 +18,15 @@ pp()
     sudo pacman -Syyu
       pacman -U --needed archlinux-keyring
     clear
-    neofetch
+#    neofetch
 }
 cln()
 {
     sudo pacman -Sc
     pacman -Qtdq | sudo pacman -Rns -
 }
-
-neofetch
+clear
+#neofetch
 
 alias p="sudo pacman"
 ecx()
@@ -50,4 +50,7 @@ gx()
     ~/gdot.sh
 }
 #xwallpaper --zoom ~/Downloads/wallpapers/sunset-rvb.jpg
-
+#ps()
+#{
+#   pacman -Ql "$1" | grep "$2"
+#}

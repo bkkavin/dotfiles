@@ -31,7 +31,11 @@ import XMonad.Util.EZConfig
 import XMonad.Util.NamedScratchpad
 --import XMonad.Hooks.EwmhDesktops
 
-myLayoutHook =  smartBorders $ gaps [(U,20) , (D,20) , (L,20) , (R,20)] $ avoidStruts (ThreeCol 1 (3/100) (1/2)  |||  Full  ||| centerMaster Grid  )
+myLayoutHook = spacingRaw True (Border 5 5 5 5) False (Border 5 5 5 5) True
+               $ smartBorders
+	       $ gaps [(U,40) , (D,20) , (L,140) , (R,140)]
+	       $ avoidStruts
+	       (ThreeCol 1 (3/100) (1/2)  |||  Full  ||| centerMaster Grid  )
 
 myTerminal = "urxvt"
 myModMask  = mod4Mask
@@ -117,7 +121,7 @@ xmonad $ docks $ def
   --  , mouseBindings      = myMouseBindings           
 
       -- hooks, layouts
-      , layoutHook         = smartSpacingWithEdge 20 $ myLayoutHook
+      , layoutHook         = smartSpacing 15 $ myLayoutHook
       , manageHook         = myManageHook
   {-  , handleEventHook    = myEventHook 
       , logHook            = myLogHook                  -}
