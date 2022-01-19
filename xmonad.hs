@@ -82,7 +82,7 @@ myStartupHook = do
         --      spawnAndDo (doRectFloat (W.RationalRect 0.55 0.1 0.4 0.8)) "urxvt"
                 spawnOnce "emacs --daemon=xmonad"
                 spawnOnce " urxvtd -q -o -f "
-
+                spawnOnce "picom -b"
                 spawnOnce "xwallpaper --zoom ~/Downloads/wallpapers/sunset-rvb.jpg"
 
  
