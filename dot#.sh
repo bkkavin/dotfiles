@@ -14,6 +14,7 @@ cp ~/git/dotfiles/urxvtc.sh ~
 cp ~/git/dotfiles/ecx.sh ~
 cp ~/git/dotfiles/gdot.sh ~
 cp ~/git/dotfiles/elfeed.org ~/.emacs.d/
+cp ~/git/dotfiles/picom.conf ~/.config/picom/picom.conf
 cd ~/git/dotfiles/
 git status
 cd ~

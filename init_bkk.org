@@ -340,19 +340,32 @@
                 ;;   '("http://nullprogram.com/feed/"
                 ;;    "https://planet.emacslife.com/atom.xml"))
 
-               
+             
 
 
 
+     (defun toggle-transparency ()
+    (interactive)
+   (let ((alpha (frame-parameter nil 'alpha)))
+     (set-frame-parameter
+      nil 'alpha
+      (if (eql (cond ((numberp alpha) alpha)
+                     ((numberp (cdr alpha)) (cdr alpha))
+                     ;; Also handle undocumented (<active> <inactive>) form.
+                     ((numberp (cadr alpha)) (cadr alpha)))
+               100)
+          '(65 . 65) '(100 . 100)))))
+         (global-set-key (kbd "C-c t") 'toggle-transparency)
+
+                 (toggle-transparency)
+                 (toggle-transparency)
+
+                 ;(inhibit-startup-echo-area-message)
+
+;(add-hook 'after-init-hook (lambda () (toggle-transparency)))
 
 
-
-
-
-
-
-
-
+(add-hook 'emacs-startup-hook(lambda ()(message "Emacs ready in %s with %d garbage collections."(format "%.2f seconds"(float-time(time-subtract after-init-time before-init-time)))gcs-done)))
 
 
 

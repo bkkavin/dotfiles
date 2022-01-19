@@ -34,7 +34,7 @@ ecx()
     args=("$@")
 emacsclient -a "" -nc -F "(quote (name . \"$1\"))" -e "($2)"
 }
-
+alias xwp="xwallpaper --zoom" 
 edl()
 {
     ls /run/user/1000/emacs
