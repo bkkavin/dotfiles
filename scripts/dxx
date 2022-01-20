@@ -1,0 +1,5 @@
+#! /bin/bafsh
+
+~/dot#.sh
+sleep 2
+xmonad --recompile
