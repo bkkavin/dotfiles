@@ -42,12 +42,19 @@ edl()
 
 dx()
 {
-    ~/dot#.sh
+    ~/dot#.sh 
+    . ~/.bashrc
 }
  
 gx()
 {
     ~/gdot.sh
+}
+xr()
+{
+    dx
+    sleep 2
+    xmonad --recompile
 }
 #xwallpaper --zoom ~/Downloads/wallpapers/sunset-rvb.jpg
 #ps()

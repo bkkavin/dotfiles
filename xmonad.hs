@@ -20,7 +20,6 @@ import XMonad.Layout.CenteredMaster
 import XMonad.Layout.Grid
 import XMonad.Layout.Renamed
 import XMonad.Actions.Submap
-import XMonad.Layout.Gaps
 import XMonad.Layout.Spacing
 import XMonad.Hooks.ManageDocks
 
@@ -31,11 +30,11 @@ import XMonad.Util.EZConfig
 import XMonad.Util.NamedScratchpad
 --import XMonad.Hooks.EwmhDesktops
 
-myLayoutHook = spacingRaw True (Border 5 5 5 5) False (Border 5 5 5 5) True
-               $ smartBorders
-	       $ gaps [(U,40) , (D,20) , (L,140) , (R,140)]
-	       $ avoidStruts
-	       (ThreeCol 1 (3/100) (1/2)  |||  Full  ||| centerMaster Grid  )
+myLayoutHook = spacingRaw False (Border 60 40 140 140) True (Border 20 20 20 20) True -- smart screen window  (Border top bottom right left)
+            -- $ smartBorders
+            -- $ gaps [(U,40) , (D,20) , (L,140) , (R,140)]
+               $ avoidStruts
+               (ThreeCol 1 (3/100) (1/2)  |||  Full  ||| centerMaster Grid  )
 
 myTerminal = "urxvt"
 myModMask  = mod4Mask
@@ -77,16 +76,16 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
 
 
 myStartupHook = do
+                spawnOnce "urxvtd -q -o -f"
+                spawnOnce "picom -b"
         --      spawnAndDo (doRectFloat (W.RationalRect 0.1 0.1 0.4 0.8)) "emacs"
         --      spawnAndDo (doShift "1") "emacs"
         --      spawnAndDo (doShift "1") "urxvt"
-        --      spawnAndDo (doRectFloat (W.RationalRect 0.1 0.1 0.4 0.8) <+>doShift "1") "brave"
+                spawnAndDo (doRectFloat (W.RationalRect 0.1 0.1 0.4 0.8) <+> doShift "1") "urxvtc -hold -e gotop"
 
                 spawnAndDo (doShift "2") "brave"    
         --      spawnAndDo (doRectFloat (W.RationalRect 0.55 0.1 0.4 0.8)) "urxvt"
                 spawnOnce "emacs --daemon=xmonad"
-                spawnOnce " urxvtd -q -o -f "
-                spawnOnce "picom -b"
                 spawnOnce "xwallpaper --zoom ~/Downloads/wallpapers/sunset-rvb.jpg"
 
  
@@ -94,10 +93,10 @@ myStartupHook = do
 
 myKeys :: [(String, X ())]
 myKeys = 
-        [ ("C-M4-r", spawn "urxvtc -hold -e xmonad --recompile")       -- Recompiles xmonad
+        [ ("C-M4-r", spawn "xr" {- "urxvtc -hold -e dx & xmonad --recompile" -})       -- Recompiles xmonad
         , ("C-M4-t", namedScratchpadAction myScratchPads "terminal")
         , ("C-M4-s", namedScratchpadAction myScratchPads "ecx")
-        , ("C-M4-m", sendMessage $ ToggleGaps)     
+ --     , ("C-M4-m", sendMessage $ ToggleGaps)     
         , ("C-M4-h", sendMessage ToggleStruts)
         ]
 
@@ -121,7 +120,7 @@ xmonad $ docks $ def
   --  , mouseBindings      = myMouseBindings           
 
       -- hooks, layouts
-      , layoutHook         = smartSpacing 15 $ myLayoutHook
+      , layoutHook         = myLayoutHook
       , manageHook         = myManageHook
   {-  , handleEventHook    = myEventHook 
       , logHook            = myLogHook                  -}
