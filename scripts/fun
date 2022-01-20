@@ -9,10 +9,10 @@
 # emacsclient -nc -s "bkk" 
 # -F "(quote (name . \"emacsbkkk\"))"
 
-read $@
-for a in $@
-do
-   echo "bkkavin $a"
-done 
+#read $@
+#for a in $@
+#do
+   figlet barrel bharathy
+#done 
 
 #

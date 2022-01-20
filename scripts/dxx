@@ -1,5 +1,5 @@
 #! /bin/bafsh
 
-~/dot#.sh
+sh ~/git/dotfiles/dotx
 sleep 2
 xmonad --recompile
