@@ -81,7 +81,7 @@ myStartupHook = do
         --      spawnAndDo (doRectFloat (W.RationalRect 0.1 0.1 0.4 0.8)) "emacs"
         --      spawnAndDo (doShift "1") "emacs"
         --      spawnAndDo (doShift "1") "urxvt"
-                spawnAndDo (doRectFloat (W.RationalRect 0.1 0.1 0.4 0.8) <+> doShift "1") "urxvtc -hold -e gotop"
+                spawnAndDo (doRectFloat (W.RationalRect 0.1 0.1 0.4 0.8) <+> doShift "1") "urxvt -hold -e gotop"
 
                 spawnAndDo (doShift "2") "brave"    
         --      spawnAndDo (doRectFloat (W.RationalRect 0.55 0.1 0.4 0.8)) "urxvt"

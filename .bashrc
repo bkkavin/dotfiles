@@ -43,6 +43,9 @@ edl()
 dx()
 {
     ~/dot#.sh 
+}
+bx()
+{
     . ~/.bashrc
 }
  
