@@ -1,7 +1,15 @@
-cd ~/git/dotfiles/
 eval 'ssh-agent -s'
-git commit -a -m "dotfiles update"
-git push
+gitx()
+{
+   
+    git commit -a -m "dotfiles update"
+    git push
+}
+
+cd ~/git/dotfiles/
+gitx    
+cd ~/git/orgfiles/
+gitx
+
 xrdb ~/.Xresources
-cd ~
 source .bashrc
