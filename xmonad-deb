@@ -1,0 +1,9 @@
+cd ~/.config/xmonad
+git clone https://github.com/xmonad/xmonad
+git clone https://github.com/xmonad/xmonad-contrib
+sudo apt install haskell-stack
+stack upgrade
+stack init
+ls
+stack ghc
+stack install
