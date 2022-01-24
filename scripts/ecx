@@ -1,3 +1,4 @@
+#! /bin/bash
 cp ~/git/dotfiles/.bashrc ~
 cp ~/git/dotfiles/init.el ~/.emacs.d/init.el 
 cp ~/dot.sh ~/git/dotfiles/

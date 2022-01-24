@@ -1,4 +1,4 @@
-#! /bin/bafsh
+#! /bin/bash
 
 sh ~/git/dotfiles/dotx
 sleep 2
