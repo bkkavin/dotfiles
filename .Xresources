@@ -1,7 +1,15 @@
-URxvt.font: xft:monospace:size=10
+URxvt.font: xft:monospace:size=16
 URxvt.scrollBar : false
 URxvt.depth : 32
 URxvt.background : [65]#000000
+URxvt.perl-ext-common: resize-font,fullscreen
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.perl-ext: default,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+URxvt.keysym.F11: perl:fullscreen:switch
 !! Colorscheme
 
 ! special

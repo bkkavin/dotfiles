@@ -1,0 +1,7 @@
+set selection-clipboard clipboard
+
+set recolor true
+set recolor-darkcolor  "#808080"
+set recolor-lightcolor
+set scroll-step 300
+map i recolor
