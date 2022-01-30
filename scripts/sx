@@ -1,0 +1,3 @@
+#! /bin/bash
+docker run -dp 49155:8080 searx/searx &
+brave http://localhost:49155 

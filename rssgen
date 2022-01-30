@@ -14,13 +14,11 @@ urltop ="https://www.reddit.com/r/sub/top/.rss?sort=top&t=time
 url = " https://www.reddit.com/r/sub/sort/.rss
 
  
-if [ $a != "t" ]
-then
-    urls = "$(	echo urltop | sed 's/sub/$a')"
-    echo urls
+ [ $a != "t" ] && urls = "$(echo urltop | sed 's/sub/$a')" ; echo urls
+   
 else
     urls = "$(echo url | sed 's/sub/$a')"
     case $a in
     n) echo urls | sed "s/sort/new" 
-    r) echo urls | sed
+    r) echo urls | sed "/sort/
 fi 
