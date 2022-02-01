@@ -35,7 +35,7 @@ myLayoutHook = spacingRaw False (Border 60 40 140 140) False (Border 20 20 20 20
             -- $ smartBorders
                $ gaps [(U,40) , (D,20) , (L,140) , (R,140)]
                $ avoidStruts
-               (ThreeCol 1 (3/100) (1/2)  |||  Full  ||| centerMaster Grid  )
+               (ThreeColMid 1 (3/100) (1/2)  |||  Full  ||| {- centerMaster -} Grid )
 
 myTerminal = "urxvt"
 myModMask  = mod4Mask

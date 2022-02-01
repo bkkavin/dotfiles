@@ -10,7 +10,7 @@ urxvtd -q -o -f
 picom -b
 emacs --daemon=xmonad
 xwallpaper --zoom ~/Downloads/wallpapers/sunset-rvb.jpg
-
+xmonad --recompile
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   exec startx
 fi
