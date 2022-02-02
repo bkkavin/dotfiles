@@ -383,8 +383,8 @@ nil 'alpha
 
 
 
-
-
+(use-package go-mode)
+(use-package haskell-mode)
 
 
 

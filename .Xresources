@@ -1,4 +1,7 @@
-URxvt.font: xft:monospace:size=16
+URxvt.font: xft:Cantarell:size=16
+URxvt.letterSpace: -8
+
+
 URxvt.scrollBar : false
 URxvt.depth : 32
 URxvt.background : [65]#000000
