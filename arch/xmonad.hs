@@ -97,8 +97,9 @@ myKeys =
         [ ("C-M4-r", spawn "xr" {- "urxvtc -hold -e dx & xmonad --recompile" -})       -- Recompiles xmonad
         , ("C-M4-t", namedScratchpadAction myScratchPads "terminal")
         , ("C-M4-s", namedScratchpadAction myScratchPads "ecx")
-        , ("C-M4-m", sendMessage $ ToggleGaps)     
+        , ("C-M4-z", sendMessage $ ToggleGaps)     
         , ("C-M4-h", sendMessage ToggleStruts)
+        , ("C-M4-k" , toggleWindowSpacingEnabled )
         ]
 
 
