@@ -6,3 +6,4 @@
 ** Reddit                                                           :reddit:
 *** [[https://www.reddit.com/r/emacs/top/.rss?sort=top&t=week][Emacs Top Week]]
 ** Twitter
+*** [[https://nitter.net/elonmusk/with_replies/rss][elon-musk]]
