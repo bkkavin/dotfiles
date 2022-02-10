@@ -1,2 +1,2 @@
 super + ctrl + e
-        emacsclient -nc -a ""
+        emacsclient -nc -a "" &
