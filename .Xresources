@@ -1,5 +1,5 @@
 URxvt.font: xft:Cantarell:size=14
-URxvt.letterSpace: -8
+URxvt.letterSpace: -5
 
 
 URxvt.scrollBar : false
