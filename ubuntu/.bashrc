@@ -7,18 +7,14 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
+neofetch
 
-
-
-
-
-alias la='ls -a'
+alias p="sudo pacman"
+alias la=' ls -a'
 alias ll='ls -l'
 alias lll='ls -al'
 alias dd='lazydocker'
-alias tb=' nc termbin.com 9999'
-
-
+ecx()
 {
     args=("$@")
 emacsclient -a "" -nc -F "(quote (name . \"$1\"))" -e "($2)"
@@ -31,7 +27,7 @@ edl()
 
 dx()
 {
-    ~/dot#.sh 
+   sh ~/dotx
 }
 bx()
 {
@@ -42,11 +38,4 @@ gx()
 {
     ~/gdot.sh
 }
-xr()
-{
-    dx
-    sleep 2
-    xmonad --recompile
-}
-
-
+#xwallpaper --zoom ~/Downloads/wallpapers/sunset-rvb.jpg
