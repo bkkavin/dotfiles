@@ -1,0 +1,2 @@
+* My dotfiles
+  It's noobie stuff and not clean.  
