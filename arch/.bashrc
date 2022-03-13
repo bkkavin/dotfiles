@@ -70,3 +70,7 @@ xr()
 #{
 #   pacman -Ql "$1" | grep "$2"
 #}
+   function paste() {
+              local file=${1:-/dev/stdin}
+              curl --data-binary @${file} https://paste.rs
+          }
