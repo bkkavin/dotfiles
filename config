@@ -1,0 +1,8 @@
+(in-package :stumpwm)
+(define-key *root-map* (kbd "c") "exec urxvt")
+(define-key *root-map* (kbd "C-c") "exec brave-browser-stable")
+
+;; (fill-keymap *root-map*
+;;   (kbd "c")   "exec urxvt"
+;;   (kbd "C-c") "exec xterm")
+ 
