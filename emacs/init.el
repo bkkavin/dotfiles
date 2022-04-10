@@ -1,4 +1,6 @@
- (defvar bootstrap-version)
+;; init.el
+
+(defvar bootstrap-version)
  (let ((bootstrap-file
  (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
  (bootstrap-version 5))
@@ -16,13 +18,3 @@
 (org-babel-load-file
    (expand-file-name "init_bkk.org"
                      user-emacs-directory))
-
-(defun package-reinstall-all-activated-packages ()
-  "Refresh and reinstall all activated packages."
-  (interactive)
-  (package-refresh-contents)
-  (dolist (package-name package-activated-list)
-    (when (package-installed-p package-name)
-      (unless (ignore-errors                   ;some packages may fail to install
-                (package-reinstall package-name))
-        (warn "Package %s failed to reinstall" package-name)))))
