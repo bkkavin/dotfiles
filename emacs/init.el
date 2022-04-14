@@ -1,4 +1,4 @@
-;; init.el
+;; Init.el
 
 (defvar bootstrap-version)
  (let ((bootstrap-file

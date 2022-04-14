@@ -23,8 +23,8 @@
 ;; Initialize package sources
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-			 ;;       ("org" . "https://orgmode.org/elpa/")
-			 ("elpa" . "https://elpa.gnu.org/packages/")))
+			   ;;    ("org" . "https://orgmode.org/elpa/")
+			 ("elpa" . "https://elpa.gnu.org/packages/")))  
 
 (package-initialize)
 (unless package-archive-contents
@@ -54,7 +54,18 @@
 (setq org-src-fontify-natively t
       org-src-tab-acts-natively t
       org-confirm-babel-evaluate nil
-      org-edit-src-content-indentation 0)
+      org-edit-src-content-indentation 0) 
+
+(use-package counsel
+  :bind (("M-x" . counsel-M-x)
+	 ("C-M-b" . counsel-ibuffer)
+	 ("C-x C-f" . counsel-find-file)
+	 :map minibuffer-local-map
+	 ("C-r" . 'counsel-minibueffer-history)))
+
+
+(use-package nov)
+
 (use-package ivy
   :diminish
   :bind (("C-s" . swiper)
@@ -77,7 +88,6 @@
 (setq evil-undo-system 'undo-tree)
 (use-package all-the-icons)
 (use-package doom-modeline
-  :straight t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15))
   :config  (setq doom-modeline-icon t)) 
@@ -111,14 +121,6 @@
 (use-package ivy-rich
   :init
   (ivy-rich-mode 1))
-
-(use-package counsel
-  :bind (("M-x" . counsel-M-x)
-	 ("C-M-b" . counsel-ibuffer)
-	 ("C-x C-f" . counsel-find-file)
-	 :map minibuffer-local-map
-	 ("C-r" . 'counsel-minibueffer-history)))
-
 ;;  (use-package helpful
 ;;    :commands (helpful-callable helpful-variable helpful-command helpful-key)
 ;;   :custom
@@ -157,7 +159,7 @@
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
   (define-key evil-insert-state-map (kbd "C-m") 'delete-char)
   (define-key evil-insert-state-map (kbd "RET") 'newline)
-  ;;(define-key evil-normal-state-map (kbd "u")  'undo-only)
+  (define-key evil-normal-state-map (kbd "u")  'undo-only)
   (define-key evil-normal-state-map (kbd "C-r") 'evil-redo)
   ;; Use visual line motions even outside of visual-line-mode buffers
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
@@ -200,103 +202,6 @@
 (use-package magit
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
-
-
-
-
-(defun bkk/org-mode-setup ()
-  (org-indent-mode)
-  (message (emacs-init-time))
-  (variable-pitch-mode 1)
-  (visual-line-mode 1))
-
-;; Org Mode Configuration ------------------------------------------------------
-
-(defun bkk/org-font-setup ()
-  ;; Replace list hyphen with dot
-  (font-lock-add-keywords 'org-mode
-			  '(("^ *\\([-]\\) "
-			     (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-
-  ;; Set faces for heading levels
-  (dolist (face '((org-level-1 . 1.2)
-		  (org-level-2 . 1.1)
-		  (org-level-3 . 1.05)
-		  (org-level-4 . 1.0)
-		  (org-level-5 . 1.1)
-		  (org-level-6 . 1.1)
-		  (org-level-7 . 1.1)
-		  (org-level-8 . 1.1)))
-    (set-face-attribute (car face) nil :font "Cantarell" :weight 'regular :height (cdr face)))
-
-  ;; Ensure that anything that should be fixed-pitch in Org files appears that way
-  (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
-  (set-face-attribute 'org-table nil   :inherit '(shadow fixed-pitch))
-  (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
-  (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
-  (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
-  (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch))
-
-(use-package org
-  :hook (org-mode . bkk/org-mode-setup)
-  :pin manual
-  :config
-  (setq org-ellipsis " ▾")
-  (bkk/org-font-setup))
-;; :demand t
-;; :load-path "~/.emacs.d/elpa/org-mode/lisp")
-
-
-
-
-;; (org-babel-load-file
-;;  (expand-file-name "init_bkk.org"
-;;                    user-emacs-directory))
-
-
-(use-package org-bullets
-  :after org
-  :hook (org-mode . org-bullets-mode)
-  :custom
-  (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
-
-;; (defun bkk/org-mode-visual-fill ()
-;; (setq visual-fill-column-width 100
-;;  visual-fill-column-center-text t)
-;;   (visual-fill-column-mode 1))
-
-;;    (use-package visual-fill-column
-;;     :hook (org-mode . bkk/org-mode-visual-fill))
-
-(use-package elfeed
-  :straight t
-  :config
-  (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
-	elfeed-show-entry-switch 'display-buffer)
-  (elfeed-org)
- ;; (elfeed-update-feed)
-  :bind
-  ("C-x w" . elfeed ))  
-
-
-
-(use-package elfeed-org
-  :straight t
-  :config
-  (setq elfeed-show-entry-switch 'display-buffer)
-  (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org")))
-
-
-(use-package elfeed-goodies
-  :straight t
-  :config
-  (elfeed-goodies/setup))
-
-;; (setq elfeed-feeds
-;;   '("http://nullprogram.com/feed/"
-;;    "https://planet.emacslife.com/atom.xml"))
-
 
 
 
@@ -378,16 +283,111 @@
 
 (use-package bongo)
 
+
+
+(use-package elfeed-org
+  :config
+  (setq elfeed-show-entry-switch 'display-buffer)
+  (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org")))
+
+
+(use-package elfeed
+  :config
+  (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
+	elfeed-show-entry-switch 'display-buffer)
+  (elfeed-org)
+ (elfeed-update)
+  :bind
+  ("C-x w" . elfeed ))  
+
+
+
+
+(use-package elfeed-goodies
+  :config
+  (elfeed-goodies/setup))
+
+;; (setq elfeed-feeds
+;;   '("http://nullprogram.com/feed/"
+;;    "https://planet.emacslife.com/atom.xml"))
+
+
 (use-package elfeed-dashboard
-  :straight t
   :config
   (setq elfeed-dashboard-file "~/.emacs.d/elfeed-dashboard.org")
   ;; update feed counts on elfeed-quit
   (advice-add 'elfeed-search-quit-window :after #'elfeed-dashboard-update-links))
 
 
+(defun bkk/org-mode-setup ()
+  (org-indent-mode)
+  (message (emacs-init-time))
+  (variable-pitch-mode 1)
+  (visual-line-mode 1))
+
+;; Org Mode Configuration ------------------------------------------------------
+
+(defun bkk/org-font-setup ()
+  ;; Replace list hyphen with dot
+  (font-lock-add-keywords 'org-mode
+			  '(("^ *\\([-]\\) "
+			     (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+  ;; Set faces for heading levels
+  (dolist (face '((org-level-1 . 1.2)
+		  (org-level-2 . 1.1)
+		  (org-level-3 . 1.05)
+		  (org-level-4 . 1.0)
+		  (org-level-5 . 1.1)
+		  (org-level-6 . 1.1)
+		  (org-level-7 . 1.1)
+		  (org-level-8 . 1.1)))
+    (set-face-attribute (car face) nil :font "Cantarell" :weight 'regular :height (cdr face)))
+
+  ;; Ensure that anything that should be fixed-pitch in Org files appears that way
+  (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-table nil   :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+  (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+  (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch))
+
+ (use-package org
+;;   :straight nil) 
+  ;; :straight ( :package "org-mode" :host nil :type git :repo"git://git.sv.gnu.org/emacs/org-mode.git"))  
+   :hook (org-mode . bkk/org-mode-setup)
+;;   :pin manual
+   :config
+   (setq org-ellipsis " ▾")
+   (bkk/org-font-setup)) 
+ ;; :demand t
+ ;; :load-path "~/.emacs.d/elpa/org-mode/lisp")
+
+
+
+
+;; (org-babel-load-file
+;;  (expand-file-name "init_bkk.org"
+;;                    user-emacs-directory))
+
+
+(use-package org-bullets
+  :after org
+  :hook (org-mode . org-bullets-mode)
+  :custom
+  (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
+
+;; (defun bkk/org-mode-visual-fill ()
+;; (setq visual-fill-column-width 100
+;;  visual-fill-column-center-text t)
+;;   (visual-fill-column-mode 1))
+
+;;    (use-package visual-fill-column
+;;     :hook (org-mode . bkk/org-mode-visual-fill))
+
+
 (use-package org-roam
-  :straight t
   :init
   (setq org-roam-v2-ack t)
   :custom
@@ -399,19 +399,6 @@
   (org-roam-setup)) 
 
 
-(use-package org-roam-ui
-  :straight
-  (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
-  :after org-roam
-  ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-  ;;         a hookable mode anymore, you're advised to pick something yourself
-  ;;         if you don't care about startup time, use
-  ;;  :hook (after-init . org-roam-ui-mode)
-  :config
-  (setq org-roam-ui-sync-theme t
-	org-roam-ui-follow t
-	org-roam-ui-update-on-save t
-	org-roam-ui-open-on-start nil))
 
 (use-package websocket
   :after org-roam
@@ -421,23 +408,19 @@
 (use-package simple-httpd
   :after org-roam
   )
-
 (use-package org-roam-ui
   :straight
-  (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
-  :after org-roam
-  ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-  ;;         a hookable mode anymore, you're advised to pick something yourself
-  ;;         if you don't care about startup time, use
-  ;; :hook (after-init . org-roam-ui-mode)
-  :config
-  (setq org-roam-ui-sync-theme t
-	org-roam-ui-follow t
-	org-roam-ui-update-on-save t
-	org-roam-ui-open-on-start nil))
-
-
-
+    (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+    :after org-roam
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
 
 
 
@@ -446,10 +429,6 @@
 
 #+RESULTS:
 : t
-
-
-
-
 
 
 
