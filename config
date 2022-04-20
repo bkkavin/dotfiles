@@ -1,8 +1,36 @@
 (in-package :stumpwm)
 (define-key *root-map* (kbd "c") "exec urxvt")
-(define-key *root-map* (kbd "C-c") "exec brave-browser-stable")
+(define-key *root-map* (kbd "C-b") "exec brave-browser-stable")
+(define-key *root-map* (kbd "b") "exec ebook-viewer")
+(define-key *root-map* (kbd "C-e") "exec nyxt ")
+(define-key *root-map* (kbd "e") "exec emacsclient -nc -a ''")
 
 ;; (fill-keymap *root-map*
 ;;   (kbd "c")   "exec urxvt"
 ;;   (kbd "C-c") "exec xterm")
- 
+
+(init-load-path #p"~/.stumpwm.d/modules") 
+	     
+(load-module "swm-gaps")
+(load-module "binwarp")
+;; Head gaps run along the 4 borders of the monitor(s)
+(setf swm-gaps:*head-gaps-size* 10)
+
+;; Inner gaps run along all the 4 borders of a window
+(setf swm-gaps:*inner-gaps-size* 10)
+
+
+;; Outer gaps add more padding to the outermost borders of a window (touching
+;; the screen border)
+(setf swm-gaps:*outer-gaps-size* 15)
+
+;; Call command
+;; toggle-gaps
+
+
+(when *initializing*
+  (swm-gaps:toggle-gaps))
+
+
+
+(load-module :stumpwm-base16)
