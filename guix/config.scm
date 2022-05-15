@@ -20,14 +20,13 @@
 
  (host-name "bkk")
  (timezone "Asia/Kolkata")
- 
+ (locale "en_US.utf8")
 
  ;; Boot in "legacy" BIOS mode, assuming /dev/sdX is the
  ;; target hard disk, and "my-root" is the label of the target
  ;; root file system.
- (bootloader (bootloader-configuration
- 	      (bootloader grub-efi-bootloader)
- 	      (target '("/dev/sda5"))))
+ (bootloader (bootloader-configuration (bootloader grub-bootloader)
+				       (target "/dev/sda5")))  ;; /dev/sda5"
 
  (file-systems (cons (file-system
  		      (device (uuid "eb7c3c6d-13b0-4e6e-ad24-64633c61b9ba")) 
