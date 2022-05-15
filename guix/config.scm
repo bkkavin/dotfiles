@@ -6,11 +6,13 @@
 ;; This is an operating system configuration template
 ;; for a "bare bones" setup, with no X11 display server.
 
- (use-modules (gnu))
+(use-modules (gnu) (gnu system nss))
+(use-package-modules bootloaders certs xorg) 
 ;; (use-service-modules networking ssh)
-;; (use-package-modules screen ssh)
+					; (use-package-modules screen ssh)
 
 (operating-system
+
 
  ;; (kernel linux)
  ;; (initrd microcode-initrd)
@@ -24,10 +26,11 @@
  ;; target hard disk, and "my-root" is the label of the target
  ;; root file system.
  (bootloader (bootloader-configuration
- 	      (bootloader grub-bootloader)
- 	      (targets '("/dev/sda5"))))
+ 	      (bootloader grub-efi-bootloader)
+ 	      (target '("/dev/sda5"))))
+
  (file-systems (cons (file-system
- 		      (device (file-system-label "guix-root"))
+ 		      (device (uuid "eb7c3c6d-13b0-4e6e-ad24-64633c61b9ba")) 
  		      (mount-point "/")
  		      (type "ext4"))
  		     %base-file-systems))
