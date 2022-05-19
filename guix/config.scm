@@ -5,6 +5,10 @@
 
 ;; This is an operating system configuration template
 ;; for a "bare bones" setup, with no X11 display server.
+(use-modules (gnu packages)
+	     (nongnu packages linux)
+             (nongnu system linux-initrd))
+
 
 (use-modules (gnu) (gnu system nss))
 (use-package-modules bootloaders certs xorg) 
