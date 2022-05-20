@@ -18,9 +18,9 @@
 (operating-system
 
 
- ;; (kernel linux)
- ;; (initrd microcode-initrd)
- ;; (firmware (list linux-firmware))
+ (kernel linux)
+ (initrd microcode-initrd)
+ (firmware (list linux-firmware))
 
  (host-name "bkk")
  (timezone "Asia/Kolkata")
@@ -29,14 +29,19 @@
  ;; Boot in "legacy" BIOS mode, assuming /dev/sdX is the
  ;; target hard disk, and "my-root" is the label of the target
  ;; root file system.
- (bootloader (bootloader-configuration (bootloader grub-bootloader)
-				       (target "/dev/sda5")))  ;; /dev/sda5"
+ (bootloader (bootloader-configuration (bootloader grub-efi-bootloader)
+				       (targets '("/boot/efi"))))  ;; /dev/sda5"
 
- (file-systems (cons (file-system
- 		      (device (uuid "eb7c3c6d-13b0-4e6e-ad24-64633c61b9ba")) 
- 		      (mount-point "/")
- 		      (type "ext4"))
- 		     %base-file-systems))
+(file-systems (append
+	       (list(file-system
+		     (device (uuid "eb7c3c6d-13b0-4e6e-ad24-64633c61b9ba")) 
+		     (mount-point "/")
+		     (type "ext4")))
+		    ;; (file-system
+		    ;;  (device (file-system-label "guix-efi"))
+		    ;;  (mount-point "/boot/efi")
+		    ;;  (type "vfat")))
+	       %base-file-systems))
 
  ;; This is where user accounts are specified.  The "root"
  ;; account is implicit, and is initially created with the
