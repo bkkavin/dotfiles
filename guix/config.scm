@@ -5,15 +5,18 @@
 
 ;; This is an operating system configuration template
 ;; for a "bare bones" setup, with no X11 display server.
-(use-modules (gnu packages)
-	     (nongnu packages linux)
-             (nongnu system linux-initrd))
 
 
-(use-modules (gnu) (gnu system nss))
-(use-package-modules bootloaders certs xorg) 
-;; (use-service-modules networking ssh)
-					; (use-package-modules screen ssh)
+(use-modules
+ (gnu)
+ (gnu system nss)
+ (gnu packages)
+ (nongnu packages linux)
+ (nongnu system linux-initrd))
+
+(use-service-modules networking ssh)
+ (use-package-modules bootloaders certs ssh xorg version-control wm stumpwm emacs emacs-xyz) 
+
 
 (operating-system
 
@@ -57,9 +60,19 @@
 	       ;; and access the webcam.
 	       (supplementary-groups '("wheel"
 				       "audio" "video")))
-	      %base-user-accounts)))
+	      %base-user-accounts))
 
 
+       (packages (append (map specification->package
+		       '( "git" "network-manager" 
+                          ;; window managers
+                          "stumpwm" "emacs" "emacs-vterm" 
+                          ;; terminal emulator
+                          "xterm" "rxvt-unicode" "nss-certs"
+                          )
+                         %base-packages))) 
+
+       (services %desktop-services))
 
 
 
