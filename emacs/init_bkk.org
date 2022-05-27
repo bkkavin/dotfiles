@@ -1,4 +1,4 @@
-#+BEGIN_SRC emacs-lisp
+ #+BEGIN_SRC emacs-lisp
 
 ;; init.org
 
@@ -204,7 +204,8 @@
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 
-
+(set-frame-parameter (selected-frame) 'alpha '(75 . 75))
+ (add-to-list 'default-frame-alist '(alpha . (75 . 75)))
 
 (defun toggle-transparency ()
   (interactive)
@@ -216,7 +217,7 @@
 		    ;; Also handle undocumented (<active> <inactive>) form.
 		    ((numberp (cadr alpha)) (cadr alpha)))
 	      100)
-	 '(65 . 65) '(100 . 100)))))
+	 '(75 . 75) '(100 . 100)))))
 (global-set-key (kbd "C-c t") 'toggle-transparency)
 
 (toggle-transparency)
@@ -422,6 +423,8 @@
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
 
+    ;; (custom-set-faces
+    ;;  '(default ((t (:stipple nil :background ((image :type jpeg :file "/home/bkk/Pictures/lots-of-trees.jpg") :origin display) :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 101 :width normal :family "misc-fixed"))))) 
 
 
 
@@ -443,7 +446,4 @@
 
 
 
-
-
-
-
+h
