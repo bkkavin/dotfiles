@@ -34,7 +34,7 @@
 
 (when *initializing*
   (run-shell-command "emacs --daemon=stumpwm")
-  (swm-gaps:toggle-gaps)
+;  (swm-gaps:toggle-gaps)
   (mode-line)
   (gnewbg ".emacs") 
   (gnewbg ".term")
