@@ -41,7 +41,7 @@
 (set-font "Hack")
 
 (when *initializing*
-  (run-shell-command "emacs --daemon=stumpwm && emacsclient -nc --socket-name=stumpwm -e '(vterm)'")
+  (run-shell-command "emacs --daemon=stumpwm && emacsclient -nc --socket-name=stumpwm -e '(vterm)'q")
     
 ;  (swm-gaps:toggle-gaps)
   (mode-line)
@@ -67,7 +67,7 @@
 
 ;;
 
-(defcommand emacs-bkk () () (gselect "emacs")(run-or-raise "emacsclient -nc --socket-name=stumpwm" '(:class "Emacs")))
+(defcommand emacs-bkk () () (gselect "emacs")(run-or-raise "emacsclient -nc --socket-name=stumpwm -e '(vterm)'" '(:class "Emacs")))
 
 ;;(load-module :stumpwm-base16)
 

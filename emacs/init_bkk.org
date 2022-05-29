@@ -436,7 +436,7 @@
   ;; :init 
   ;;(setq geiser-mit-binary "/usr/bin/mit-scheme-x86-64")
   ;; (setq geiser-active-implementations '(mit))
-
+(global-set-key (kbd"C-c v") 'vterm) 
  #+END_SRC
 
 #+RESULTS:
