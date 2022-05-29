@@ -6,18 +6,17 @@
 ;; This is an operating system configuration template
 ;; for a "bare bones" setup, with no X11 display server.
 
-
+;;(use-package-modules wm stumpwm)
 (use-modules
  (gnu)
  (gnu system nss)
  (gnu packages)
+ (gnu services)
  (nongnu packages linux)
  (nongnu system linux-initrd))
 
 (use-service-modules networking ssh)
- (use-package-modules bootloaders certs ssh xorg version-control wm stumpwm emacs emacs-xyz) 
-
-
+(use-package-modules bootloaders certs ssh xorg version-control wm emacs emacs-xyz gnome) 
 (operating-system
 
 
@@ -72,8 +71,10 @@
                           )
                          %base-packages))) 
 
+       ;;(services (cons (network-manager-service-type) %desktop-services))
+
        (services %desktop-services))
 
 
 
-
+)

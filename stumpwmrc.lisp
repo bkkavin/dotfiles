@@ -1,14 +1,21 @@
 (in-package :stumpwm)
-(define-key *root-map* (kbd "c") "exec urxvt") 
-(define-key *root-map* (kbd "C-b") "exec brave-browser-stable") 
+(define-key *root-map* (kbd "C-c") "exec urxvt") 
+(define-key *root-map* (kbd "C-b") "brave-bkk") 
+;;(define-key *root-map* (kbd "C-b") "exec brave-browser-stable") 
 (define-key *root-map* (kbd "b") "exec ebook-viewer")
 (define-key *root-map* (kbd "C-e") "exec nyxt ")
-(define-key *root-map* (kbd "e") "exec emacsclient -nc --socket-name=stumpwm")
+(define-key *root-map* (kbd "e") "emacs-bkk")
+(define-key *root-map* (kbd "w") "windowlist")
+(define-key *groups-map* (kbd "g") "grouplist")
+;; (define-key *root-map* (kbd "e") "exec emacsclient -nc --socket-name=stumpwm")
+;; (define-key *root-map* (kbd "c") "exec emacsclient -nc --socket-name=stumpwm -e '(vterm)' ")
+;;
 
-;; (fill-keymap *root-map*
+; (fill-keymap *root-map*
 ;;   (kbd "c")   "exec urxvt"
 ;;   (kbd "C-c") "exec xterm")
-
+(run-shell-command "compton &")
+(run-shell-command "xwallpaper --zoom ~/Pictures/lots-of-trees.jpg")
 (init-load-path #p"~/.stumpwm.d/modules") 
 	     
 (load-module "swm-gaps")
@@ -31,13 +38,14 @@
 (setq *mode-line-background-color* "#002222" )
 (setq *mode-line-foreground-color* "#999999")
 (setq *mode-line-border-color* "#009999")
+(set-font "Hack")
 
 (when *initializing*
-  (run-shell-command "emacs --daemon=stumpwm")
+  (run-shell-command "emacs --daemon=stumpwm && emacsclient -nc --socket-name=stumpwm")
+    
 ;  (swm-gaps:toggle-gaps)
   (mode-line)
-  (gnewbg ".emacs") 
-  (gnewbg ".term")
+  (grename "emacs")
   (gnewbg "web")
   (gnewbg "book"))
 
@@ -59,12 +67,26 @@
 
 ;;
 
-		       
-		       
+(defcommand emacs-bkk () () (gselect "emacs")(run-or-raise "emacsclient -nc --socket-name=stumpwm" '(:class "Emacs")))
 
 ;;(load-module :stumpwm-base16)
 
-(run-shell-command "xwallpaper --zoom ~/Pictures/lots-of-trees.jpg")
-(run-shell-command "compton &")
+(defcommand brave-bkk ()()(gselect "web")(run-or-raise "brave-browser" '(:class "Brave-browser")))
+
+	    
 
 
+
+;; (defcommand emacs-bkk () ()
+;; 	    ((run-or-raise "emacsclient -nc --socket-name=stumpwm" '(:class "Emacs"))
+;; 	     (let emacsbkk (current-window)
+;; 	    (select emacsbkk))
+
+;; 	    (gmove-and-follow ".emacs")))'
+;; ;;(load-module :stumpwm-base16)
+
+;; (defcommand brave-bkk ()()(
+;; 			   (run-or-raise "brave-browser" '(:class "Brave-browser"))
+;; 			   (gmove-and-follow "web")
+;; 			   ))
+	

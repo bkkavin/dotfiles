@@ -348,6 +348,8 @@ elfeed-show-entry-switch 'display-buffer)
 
 
 
+(set-frame-parameter (selected-frame) 'alpha '(75 . 75))
+(add-to-list 'default-frame-alist '(alpha . (75 . 75)))
 
 
 (defun toggle-transparency ()
@@ -362,9 +364,6 @@ nil 'alpha
 100)
 '(65 . 65) '(100 . 100)))))
 (global-set-key (kbd "C-c t") 'toggle-transparency)
-
-(toggle-transparency)
-(toggle-transparency)
 
 
 
@@ -420,7 +419,7 @@ nil 'alpha
 (add-hook 'slime-repl-mode-hook 'rainbow-delimiters-mode)
 
 
-
+(use-package geiser-mit)
 
 
 
