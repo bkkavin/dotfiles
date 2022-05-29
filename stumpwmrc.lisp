@@ -5,6 +5,7 @@
 (define-key *root-map* (kbd "b") "exec ebook-viewer")
 (define-key *root-map* (kbd "C-e") "exec nyxt ")
 (define-key *root-map* (kbd "e") "emacs-bkk")
+(define-key *root-map* (kbd "E") "exec emacs --daemon=stumpwm || emacsclient -nc --socket-name=stumpwm -e '(vterm)'")
 (define-key *root-map* (kbd "w") "windowlist")
 (define-key *groups-map* (kbd "g") "grouplist")
 ;; (define-key *root-map* (kbd "e") "exec emacsclient -nc --socket-name=stumpwm")
@@ -41,7 +42,7 @@
 (set-font "Hack")
 
 (when *initializing*
-  (run-shell-command "emacs --daemon=stumpwm && emacsclient -nc --socket-name=stumpwm -e '(vterm)'q")
+  (run-shell-command "emacs --daemon=stumpwm && emacsclient -nc --socket-name=stumpwm -e '(vterm)'")
     
 ;  (swm-gaps:toggle-gaps)
   (mode-line)
