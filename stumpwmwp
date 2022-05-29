@@ -1,0 +1,73 @@
+#S(DDUMP
+   :SCREENS (#S(SDUMP
+                :NUMBER 0
+                :GROUPS (#S(GDUMP
+                            :NUMBER -2
+                            :NAME ".term"
+                            :TREE (#S(FDUMP
+                                      :NUMBER 0
+                                      :X 0
+                                      :Y 0
+                                      :WIDTH 1920
+                                      :HEIGHT 1080
+                                      :WINDOWS NIL
+                                      :CURRENT NIL))
+                            :CURRENT 0)
+                         #S(GDUMP
+                            :NUMBER -1
+                            :NAME ".emacs"
+                            :TREE (#S(FDUMP
+                                      :NUMBER 0
+                                      :X 0
+                                      :Y 0
+                                      :WIDTH 1920
+                                      :HEIGHT 1080
+                                      :WINDOWS NIL
+                                      :CURRENT NIL))
+                            :CURRENT 0)
+                         #S(GDUMP
+                            :NUMBER 1
+                            :NAME "home"
+                            :TREE ((#S(FDUMP
+                                       :NUMBER 0
+                                       :X 0
+                                       :Y 0
+                                       :WIDTH 960
+                                       :HEIGHT 1080
+                                       :WINDOWS (8390250)
+                                       :CURRENT 8390250)
+                                    #S(FDUMP
+                                       :NUMBER 1
+                                       :X 960
+                                       :Y 0
+                                       :WIDTH 960
+                                       :HEIGHT 1080
+                                       :WINDOWS (12582915)
+                                       :CURRENT 12582915)))
+                            :CURRENT 1)
+                         #S(GDUMP
+                            :NUMBER 2
+                            :NAME "web"
+                            :TREE (#S(FDUMP
+                                      :NUMBER 0
+                                      :X 0
+                                      :Y 0
+                                      :WIDTH 1920
+                                      :HEIGHT 1080
+                                      :WINDOWS NIL
+                                      :CURRENT NIL))
+                            :CURRENT 0)
+                         #S(GDUMP
+                            :NUMBER 3
+                            :NAME "book"
+                            :TREE (#S(FDUMP
+                                      :NUMBER 0
+                                      :X 0
+                                      :Y 0
+                                      :WIDTH 1920
+                                      :HEIGHT 1080
+                                      :WINDOWS NIL
+                                      :CURRENT NIL))
+                            :CURRENT 0))
+                :CURRENT 1))
+   :CURRENT 0)
