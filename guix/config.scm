@@ -16,9 +16,9 @@
  (nongnu packages linux)
  (nongnu system linux-initrd))
 
-;;(use-service-modules networking ssh)
 (use-package-modules bootloaders certs ssh xorg version-control wm emacs emacs-xyz connman xdisorg) 
 
+(use-service-modules networking ssh)
 
 
 (operating-system
@@ -81,9 +81,18 @@
                      )
 		   %base-packages))
 
+ ;; (services (cons *(service (connman-service-type))
+ ;; 			    (connman-configuration connman)))
+			     
+ ;; 			   %desktop-services))
 
-;;(services %desktop-services)
+
  
+ (services (service (connman-service-type
+			    (connman-configuration
+			     (disable-vpn? #t)))))
+;;			   %desktop-services)
+
 
  ;; (services (remove (lambda (service)
  ;; 		     (eq? (service-kind service) gdm-service-type))
