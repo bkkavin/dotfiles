@@ -9,16 +9,19 @@
 ;;(use-package-modules wm stumpwm)
 (use-modules
  (gnu)
+ (srfi srfi-1)
  (gnu system nss)
  (gnu packages)
  (gnu services)
  (nongnu packages linux)
  (nongnu system linux-initrd))
 
-(use-service-modules networking ssh)
-(use-package-modules bootloaders certs ssh xorg version-control wm emacs emacs-xyz gnome) 
-(operating-system
+;;(use-service-modules networking ssh)
+(use-package-modules bootloaders certs ssh xorg version-control wm emacs emacs-xyz connman xdisorg) 
 
+
+
+(operating-system
 
  (kernel linux)
  (initrd microcode-initrd)
@@ -34,16 +37,16 @@
  (bootloader (bootloader-configuration (bootloader grub-efi-bootloader)
 				       (targets '("/boot/efi"))))  ;; /dev/sda5"
 
-(file-systems (append
-	       (list(file-system
-		     (device (uuid "eb7c3c6d-13b0-4e6e-ad24-64633c61b9ba")) 
-		     (mount-point "/")
-		     (type "ext4")))
-		    ;; (file-system
-		    ;;  (device (file-system-label "guix-efi"))
-		    ;;  (mount-point "/boot/efi")
-		    ;;  (type "vfat")))
-	       %base-file-systems))
+ (file-systems (append
+		(list(file-system
+		      (device (uuid "eb7c3c6d-13b0-4e6e-ad24-64633c61b9ba")) 
+		      (mount-point "/")
+		      (type "ext4")))
+		;; (file-system
+		;;  (device (file-system-label "guix-efi"))
+		;;  (mount-point "/boot/efi")
+		;;  (type "vfat")))
+		%base-file-systems))
 
  ;; This is where user accounts are specified.  The "root"
  ;; account is implicit, and is initially created with the
@@ -61,20 +64,35 @@
 				       "audio" "video")))
 	      %base-user-accounts))
 
+ ;; (packages %base-packages))
+ ;; (packages (append (map specification->package
+ ;; 			'( "git" "connman" 
+ ;;                           ;; window managers
+ ;;                           "stumpwm" "emacs" "emacs-vterm" 
+ ;;                           ;; terminal emulator
+ ;;                           "xterm" "rxvt-unicode" "nss-certs"
+ ;;                           )
+ ;; 			%base-packages)))
+ (packages (append (list connman 
+                     ;; window managers
+                     stumpwm emacs emacs-vterm 
+                     ;; terminal emulator
+                     xterm rxvt-unicode nss-certs
+                     )
+		   %base-packages))
 
-       (packages (append (map specification->package
-		       '( "git" "network-manager" 
-                          ;; window managers
-                          "stumpwm" "emacs" "emacs-vterm" 
-                          ;; terminal emulator
-                          "xterm" "rxvt-unicode" "nss-certs"
-                          )
-                         %base-packages))) 
 
-       ;;(services (cons (network-manager-service-type) %desktop-services))
+;;(services %desktop-services)
+ 
 
-       (services %desktop-services))
+ ;; (services (remove (lambda (service)
+ ;; 		     (eq? (service-kind service) gdm-service-type))
+ ;; 		   %desktop-services))
+ (name-service-switch %mdns-host-lookup-nss) )
+;;(services (cons (network-manager-service-type) %desktop-services))
 
+;;       (services %desktop-services))
 
 
-)
+
+
