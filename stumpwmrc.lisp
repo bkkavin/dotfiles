@@ -8,6 +8,7 @@
 (define-key *root-map* (kbd "E") "exec emacs --daemon=stumpwm || emacsclient -nc --socket-name=stumpwm -e '(vterm)'")
 (define-key *root-map* (kbd "w") "windowlist")
 (define-key *groups-map* (kbd "g") "grouplist")
+(define-key *root-map* (kbd "l") "show-menu")
 ;; (define-key *root-map* (kbd "e") "exec emacsclient -nc --socket-name=stumpwm")
 ;; (define-key *root-map* (kbd "c") "exec emacsclient -nc --socket-name=stumpwm -e '(vterm)' ")
 ;;
@@ -86,8 +87,65 @@
 ;; 	    (gmove-and-follow ".emacs")))'
 ;; ;;(load-module :stumpwm-base16)
 
-;; (defcommand brave-bkk ()()(
+;;(load-module :stumpwm-base16)
+
+ (load-module "net")
+
+;; (load-module "battery-portable")
+
+;; ;; Disk space on modeline
+;; (ql:quickload "cl-diskspace")
+;; ;; on GNU/linux only
+;; (ql:quickload "cl-mount-info")
+;; (load-module "disk")
+
+
+
+  (load-module "cpu")
+
+;; (load-module "mem")
+;; (load-module "wifi")
+;; (load-module "end-session")
+;; (load-module "lookup")
+;; (load-module "screenshots")
+;; (load-module "searchengines")
+;; (load-module "stump-lock")
+;; (load-module "stump-nm") 
+;; (load-module "undocumented") 
+;; (load-module "winner-mode") 
+;; ;
+					; (defcommand brave-bkk ()()(
 ;; 			   (run-or-raise "brave-browser" '(:class "Brave-browser"))
 ;; 			   (gmove-and-follow "web")
 ;; 			   ))
 	
+(load-module "app-menu")
+(setq app-menu:*app-menu*
+      '(("BROWSER"
+         ;; submenu
+         ;;("Firefox" firefox)       ; call stumpwm command
+         ;;("Skype" "skypeforlinux") ; run shell script
+
+         ("Brave" brave-bkk)       ; call stumpwm command
+	 ("Chrome" "google-chrome-stable")
+         )
+	("CONFIG"
+	 ("stumpwm" "cp ~/git/dotfiles/stumpwmrc.lisp ~/.config/stumpwm/config")
+	 ("emacs" "cp ~/git/dotfiles/emacs/init_bkk.org ~/.emacs.d/init_bkk.org")
+
+	 )))
+
+
+        ;; ("WORK"
+        ;;  ("OpenOffice.org"  "openoffice"))
+        ;; ("GRAPHICS"
+        ;;  ("GIMP" "gimp")
+        ;;  ("Inkscape" "inkscape"))
+        ;; ("urxvt" urxvt)
+        ;; ("K3B" "k3b")))
+;;(load-module :swm-emacs) 
+     (setf stumpwm:*screen-mode-line-format*
+           (list  "%w | %C %l"
+                 '(:eval (stumpwm:run-shell-command "date" t)))) 
+
+

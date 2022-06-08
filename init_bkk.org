@@ -421,7 +421,13 @@ nil 'alpha
 
 (use-package geiser-mit)
 
+(use-package run-assoc)
+(setq associated-program-alist
+      '(("zathura --fork " "\\.pdf$")
 
+;;      '(("zathura" "\\.pdf$")
+        ;; etc.
+	("mpv" "\\.mp3$")))
 
 (global-set-key (kbd "C-c v") 'vterm)
 
