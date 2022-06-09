@@ -1,10 +1,11 @@
+
 #+BEGIN_SRC emacs-lisp
 
 ;; init.org
 
 (setq inhibit-startup-message t)
 
-(scroll-bar-mode -1)        ; Disable visible scrollbar
+(scroll-bar-mode Disable visible scrollbar
 (tool-bar-mode -1)          ; Disable the toolbar
 (tooltip-mode -1)           ; Disable tooltips
 
@@ -294,9 +295,9 @@ org-edit-src-content-indentation 0)
 ;;  :hook (after-init . org-roam-ui-mode)
     :config
     (setq org-roam-ui-sync-theme t
-          org-roam-ui-follow t
-          org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start nil))
+	  org-roam-ui-follow t
+	  org-roam-ui-update-on-save t
+	  org-roam-ui-open-on-start nil))
 
 (use-package websocket
 :after org-roam
@@ -421,17 +422,40 @@ nil 'alpha
 
 (use-package geiser-mit)
 
-(use-package run-assoc)
-(setq associated-program-alist
-      '(("zathura --fork " "\\.pdf$")
+;; (use-package run-assoc)
+;; (setq associated-program-alist
+;;       '(("zathura --fork " "\\.pdf$")
 
-;;      '(("zathura" "\\.pdf$")
-        ;; etc.
-	("mpv" "\\.mp3$")))
+;; ;;      '(("zathura" "\\.pdf$")
+;;         ;; etc.
+;; 	("mpv" "\\.mp3$")))
 
 (global-set-key (kbd "C-c v") 'vterm)
 
+;; (setq dired-guess-shell-alist-user '(("\\.pdf\\'" "evince")
+;;                                  ("\\.doc\\'" "libreoffice")
+;;                                  ("\\.docx\\'" "libreoffice")
+;;                                  ("\\.ppt\\'" "libreoffice")
+;;                                  ("\\.pptx\\'" "libreoffice")
+;;                                  ("\\.xls\\'" "libreoffice")
+;;                                  ("\\.xlsx\\'" "libreoffice")
+;;                                  ("\\.jpg\\'" "pinta")
+;;                                  ("\\.png\\'" "pinta")
+;;                                  ("\\.java\\'" "idea")))
+  (setq dired-guess-shell-alist-user '(("\\.pdf\\'" "zathura")
+                                   ("\\.doc\\'" "libreoffice")
+                                   ("\\.docx\\'" "libreoffice")
+                                   ("\\.ppt\\'" "libreoffice")
+                                   ("\\.pptx\\'" "libreoffice")
+                                   ("\\.xls\\'" "libreoffice")
+                                   ("\\.xlsx\\'" "libreoffice")
+                              ;;   ("\\.jpg\\'" "pinta")
+                              ;;   ("\\.png\\'" "pinta")
+                              ;;   ("\\.java\\'" "idea")
+                                   ))
 
+(use-package crux
+  :bind (("C-c o" . crux-open-with)))
 
 
 

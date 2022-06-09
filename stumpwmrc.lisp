@@ -1,11 +1,14 @@
 (in-package :stumpwm)
-(define-key *root-map* (kbd "C-c") "exec urxvt") 
+(run-shell-command "compton &")
+(run-shell-command "xwallpaper --zoom ~/Pictures/lots-of-trees.jpg")
+(init-load-path #p"~/.stumpwm.d/modules") 
+
 (define-key *root-map* (kbd "b") "brave-bkk") 
 ;;(define-key *root-map* (kbd "C-b") "exec brave-browser-stable") 
 (define-key *root-map* (kbd "C-b") "exec ebook-viewer")
 (define-key *root-map* (kbd "C-e") "exec nyxt ")
-(define-key *root-map* (kbd "e") "emacs-bkk")
-(define-key *root-map* (kbd "E") "exec emacs --daemon=stumpwm || emacsclient -nc --socket-name=stumpwm -e '(vterm)'")
+;;(define-key *root-map* (kbd "e") "emacs-bkk")
+(define-key *root-map* (kbd "e") "exec emacsclient -nc -a='' -e '(vterm)'")
 (define-key *root-map* (kbd "w") "windowlist")
 (define-key *groups-map* (kbd "g") "grouplist")
 (define-key *root-map* (kbd "l") "show-menu")
@@ -13,13 +16,10 @@
 ;; (define-key *root-map* (kbd "c") "exec emacsclient -nc --socket-name=stumpwm -e '(vterm)' ")
 ;;
 
-; (fill-keymap *root-map*
+					; (fill-keymap *root-map*
 ;;   (kbd "c")   "exec urxvt"
 ;;   (kbd "C-c") "exec xterm")
-(run-shell-command "compton &")
-(run-shell-command "xwallpaper --zoom ~/Pictures/lots-of-trees.jpg")
-(init-load-path #p"~/.stumpwm.d/modules") 
-	     
+
 (load-module "swm-gaps")
 ;;(load-module "binwarp")
 ;; Head gaps run along the 4 borders of the monitor(s)
@@ -44,12 +44,8 @@
 
 (when *initializing*
   (run-shell-command "emacs --daemon=stumpwm && emacsclient -nc --socket-name=stumpwm -e '(vterm)'")
-    
-;  (swm-gaps:toggle-gaps)
-  (mode-line)
-  (grename "emacs")
-  (gnewbg "web")
-  (gnewbg "book"))
+					;  (swm-gaps:toggle-gaps)
+  (mode-line))
 
 
 ;; Message & input window
@@ -64,18 +60,18 @@
 (defparameter *normal-border-width* 5)
 ;;(setq *which-key-mode* t)
 
-;(act-on-matching-windows (:screen 0)) 
+					;(act-on-matching-windows (:screen 0)) 
 ;;(move-windows-to-group :class ("emacs") ".emacs")
 
 ;;
 
-(defcommand emacs-bkk () () (gselect "emacs")(run-or-raise "emacsclient -nc --socket-name=stumpwm -e '(vterm)'" '(:class "Emacs")))
+;;(defcommand emacs-bkk () () (run-or-raise "emacsclient -nc --socket-name=stumpwm -e '(vterm)'" '(:class "Emacs")))
 
 ;;(load-module :stumpwm-base16)
 
-(defcommand brave-bkk ()()(gselect "web")(run-or-raise "brave-browser" '(:class "Brave-browser")))
+(defcommand brave-bkk ()() (run-or-raise "brave-browser" '(:class "Brave-browser")))
 
-	    
+
 
 
 
@@ -89,7 +85,7 @@
 
 ;;(load-module :stumpwm-base16)
 
- (load-module "net")
+(load-module "net")
 
 ;; (load-module "battery-portable")
 
@@ -101,7 +97,7 @@
 
 
 
-  (load-module "cpu")
+(load-module "cpu")
 
 ;; (load-module "mem")
 ;; (load-module "wifi")
@@ -111,14 +107,21 @@
 ;; (load-module "searchengines")
 ;; (load-module "stump-lock")
 ;; (load-module "stump-nm") 
-;; (load-module "undocumented") 
-;; (load-module "winner-mode") 
+(load-module "undocumented") 
+(load-module "winner-mode") 
+(defvar *winner-map* (make-sparse-keymap))
+(define-key *root-map* (kbd "w") '*winner-map*)
+(define-key *winner-map* (kbd "n") "winner-undo")
+(define-key *winner-map* (kbd "p") "winner-redo")
+(add-hook *post-command-hook* (lambda (command)
+                                (when (member command winner-mode:*default-commands*)
+                                  (winner-mode:dump-group-to-file))))
 ;; ;
 					; (defcommand brave-bkk ()()(
 ;; 			   (run-or-raise "brave-browser" '(:class "Brave-browser"))
 ;; 			   (gmove-and-follow "web")
 ;; 			   ))
-	
+
 (load-module "app-menu")
 (setq app-menu:*app-menu*
       '(("BROWSER"
@@ -136,16 +139,63 @@
 	 )))
 
 
-        ;; ("WORK"
-        ;;  ("OpenOffice.org"  "openoffice"))
-        ;; ("GRAPHICS"
-        ;;  ("GIMP" "gimp")
-        ;;  ("Inkscape" "inkscape"))
-        ;; ("urxvt" urxvt)
-        ;; ("K3B" "k3b")))
+;; ("WORK"
+;;  ("OpenOffice.org"  "openoffice"))
+;; ("GRAPHICS"
+;;  ("GIMP" "gimp")
+;;  ("Inkscape" "inkscape"))
+;; ("urxvt" urxvt)
+;; ("K3B" "k3b")))
 ;;(load-module :swm-emacs) 
-     (setf stumpwm:*screen-mode-line-format*
-           (list  "%w | %C %l"
-                 '(:eval (stumpwm:run-shell-command "date" t)))) 
+(setf stumpwm:*screen-mode-line-format*
+      (list  "%w | %C %l"
+             '(:eval (stumpwm:run-shell-command "date" t)))) 
 
+
+(load-module "spatial-groups")
+(spatial-groups:install-default-keybinds) 
+
+
+(defvar *spatial-map* (make-sparse-keymap))
+
+(define-key *root-map* (kbd "C-t") '*spatial-map*)
+  ;; (define-key *spatial-map* (kbd "S-p")      "move-focus up")
+  ;; (define-key *spatial-map* (kbd "S-n")    "move-focus down")
+  ;; (define-key *spatial-map* (kbd "S-b")    "move-focus left")
+  ;; (define-key *spatial-map* (kbd "S-f")   "move-focus right")
+
+  ;; Control arrows move between screens on the current desktop
+  (define-key *spatial-map* (kbd "b")    "coord-left")
+  (define-key *spatial-map* (kbd "f")   "coord-right")
+  (define-key *spatial-map* (kbd "p")      "coord-up")
+  (define-key *spatial-map* (kbd "n")    "coord-down")
+
+  ;; Control-Shift left/right to switch desktop Z
+  (define-key *spatial-map* (kbd "B")  "coord-taskleft")
+  (define-key *spatial-map* (kbd "F") "coord-taskright")
+
+  ;; Control-Shift-Up to return to origin 0,0 on current desktop Z
+  (define-key *spatial-map* (kbd "P")    "coord-taskorigin")
+
+  ;; "Pop" back to last desktop position
+  (define-key *spatial-map* (kbd "N")  "coord-taskpop") 
+
+
+
+
+
+  (define-key *top-map* (kbd "s-b")    "coord-left")
+  (define-key *top-map* (kbd "s-f")   "coord-right")
+  (define-key *top-map* (kbd "s-p")      "coord-up")
+  (define-key *top-map* (kbd "s-n")    "coord-down")
+
+  ;; Control-Shift left/right to switch desktop Z
+  (define-key *top-map* (kbd "s-B")  "coord-taskleft")
+  (define-key *top-map* (kbd "s-F") "coord-taskright")
+
+  ;; Control-Shift-Up to return to origin 0,0 on current desktop Z
+  (define-key *top-map* (kbd "s-P")    "coord-taskorigin")
+
+  ;; "Pop" back to last desktop position
+  (define-key *top-map* (kbd "s-N")  "coord-taskpop") 
 

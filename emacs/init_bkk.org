@@ -1,3 +1,6 @@
+#+TITLE: B K Kavin's emacs configuration
+#+AUTHOR: bkkavin
+
 #+BEGIN_SRC emacs-lisp
 
 ;; init.org
@@ -332,15 +335,15 @@ elfeed-show-entry-switch 'display-buffer)
 
 
 
-(use-package elfeed-org
-:ensure t
-:config
-(setq elfeed-show-entry-switch 'display-buffer)
-(setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org")))
-(use-package elfeed-goodies
-:ensure t
-:config
-(elfeed-goodies/setup))
+;; (use-package elfeed-org
+;; :ensure t
+;; :config
+;; (setq elfeed-show-entry-switch 'display-buffer)
+;; (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org")))
+;; (use-package elfeed-goodies
+;; :ensure t
+;; :config
+;; (elfeed-goodies/setup))
 
 ;; (setq elfeed-feeds
 ;;   '("http://nullprogram.com/feed/"
@@ -421,7 +424,7 @@ nil 'alpha
 
 ;; (use-package run-assoc)
 ;; (setq associated-program-alist
-;;       '(("zathura --fork " "\\.pdf$")
+;; ;;      '(("zathura --fork " "\\.pdf$")
 
 ;;       '(("zathura" "\\.pdf$")
 ;;         ;; etc.
@@ -429,13 +432,18 @@ nil 'alpha
 
 (global-set-key (kbd "C-c v") 'vterm)
 
-(setq dired-guess-shell-alist-user
-      (list
-       (list "\\.pdf$" "zathura")));; 
+;; (setq dired-guess-shell-alist-user
+;;       (list
+;;        (list "\\.pdf$" "zathura")));; 
+
+(use-package crux
+  :bind (("C-c o" . crux-open-with)
+         ("C-a" . crux-move-beginning-of-line)))
 
 
 
 #+END_SRC
+
 
 #+RESULTS:
 : t
