@@ -8,7 +8,7 @@
 (define-key *root-map* (kbd "C-b") "exec ebook-viewer")
 (define-key *root-map* (kbd "C-e") "exec nyxt ")
 ;;(define-key *root-map* (kbd "e") "emacs-bkk")
-(define-key *root-map* (kbd "e") "exec emacsclient -nc -a='' -e '(vterm)'")
+(define-key *root-map* (kbd "e") "exec emacsclient -nc -a '' -e '(vterm)'")
 (define-key *root-map* (kbd "w") "windowlist")
 (define-key *groups-map* (kbd "g") "grouplist")
 (define-key *root-map* (kbd "l") "show-menu")
@@ -42,10 +42,18 @@
 (setq *mode-line-border-color* "#009999")
 (set-font "Hack")
 
-(when *initializing*
-  (run-shell-command "emacs --daemon=stumpwm && emacsclient -nc --socket-name=stumpwm -e '(vterm)'")
-					;  (swm-gaps:toggle-gaps)
-  (mode-line))
+;; (when *initializing*
+;;   (run-shell-command "emacs --daemon=stumpwm && emacsclient -nc --socket-name=stumpwm -e '(vterm)'")
+;; 					;  (swm-gaps:toggle-gaps)
+;;   (mode-line))
+ (when *initializing*
+   (run-shell-command "emacs --daemon && exec emacsclient -nc -a '' -e '(vterm)'")
+ 					;  (swm-gaps:toggle-gaps)
+
+;;   (run-shell-command "emacs --daemon && ")
+
+   (mode-line))
+
 
 
 ;; Message & input window

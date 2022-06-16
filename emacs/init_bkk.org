@@ -421,6 +421,7 @@ nil 'alpha
 
 
 (use-package geiser-mit)
+(use-package geiser-guile)
 
 ;; (use-package run-assoc)
 ;; (setq associated-program-alist
