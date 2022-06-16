@@ -1,0 +1,21 @@
+#! /bin/zsh
+#echo $2 $1 $2
+swmg=~/git/dotfiles/stumpwmrc.lisp
+swmh=~/config/stumpwm/config
+gcfg=~/git/dotfiles/guix/config.scmb
+gchg=~/git/dotfiles/guix/channels.scm
+eig=~/git/dotfiles/emacs/init.el
+eog=~/git/dotfiles/emacs/init_bkk.org
+eih=~/.emacs.d/init.el
+eoh=~/.emacs.d/init_bkk.org
+
+#echo $swmg
+
+case $1 in
+    swm) case $2 in h2g) cat $swmh $swmg ;; g2h) cat $swmg $swmh ;; esac ;;
+    ei)   case $2 in h2g) cat $eih $eig ;; g2h) cat $eig $eih ;; esac ;;
+    eo)   case $2 in h2g) cat $eoh $eog ;; g2h) cat $eog $eoh ;; esac ;;
+ #  h2g) echo bkkh2g ;;
+    *) echo wrong arguments  ;;
+	   esac
+	   
