@@ -13,9 +13,6 @@ add Control = Control_L
 
 
 
-
-
-
 ! xmodmap for the Colemak Mod-DH layout (US, ANSI keyboard, Z angle mod).
 ! http://colemakmods.github.io/mod-dh/.
 ! Public domain.

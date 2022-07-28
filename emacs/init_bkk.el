@@ -42,11 +42,12 @@ conf-mode-hook))
 (add-hook mode (lambda () (display-line-numbers-mode 1))))
 
 ;; Override some modes which derive from the above
-(dolist (mode '(org-mode-hook))
+(dolist (mode '(org-mode-hook
+		vterm-mode-hook))
 (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 
-(toggle-debug-on-error 1)
+(setq debug-on-error t) 
 
 (use-package command-log-mode)
 
@@ -427,8 +428,18 @@ nil 'alpha
 ;;         ;; etc.
 ;; 	("mpv" "\\.mp4$")))
 
-(global-set-key (kbd "C-c v") 'vterm)
 
 ;; (setq dired-guess-shell-alist-user
 ;;       (list
 ;;        (list "\\.pdf$" "zathura")));;
+(use-package multi-vterm
+	:config
+	(add-hook 'vterm-mode-hook
+			(lambda ()
+			(setq-local evil-insert-state-cursor 'box)
+			(evil-insert-state)))) 
+
+	(global-set-key (kbd "C-c v") 'multi-vterm)
+(use-package crux
+  :bind (("C-c o" . crux-open-with)))
+

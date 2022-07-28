@@ -1,10 +1,9 @@
 (in-package :stumpwm)
-(run-shell-command "compton &")
-(run-shell-command "xwallpaper --zoom ~/Pictures/lots-of-trees.jpg")
-(init-load-path #p"~/.stumpwm.d/modules") 
+(run-shell-command "picom &")
+(run-shell-command "xwallpaper --zoom ~/pix/lots-of-trees.jpg")
+(init-load-path #p"/home/bkk/.stumpwm.d/modules") 
 
-(define-key *root-map* (kbd "b") "brave-bkk") 
-;;(define-key *root-map* (kbd "C-b") "exec brave-browser-stable") 
+(define-key *root-map* (kbd "C-b") "exec brave") 
 (define-key *root-map* (kbd "C-b") "exec ebook-viewer")
 (define-key *root-map* (kbd "C-e") "exec nyxt ")
 ;;(define-key *root-map* (kbd "e") "emacs-bkk")
@@ -12,6 +11,7 @@
 (define-key *root-map* (kbd "w") "windowlist")
 (define-key *groups-map* (kbd "g") "grouplist")
 (define-key *root-map* (kbd "l") "show-menu")
+(define-key *root-map* (kbd "T") "send-raw-key")
 ;; (define-key *root-map* (kbd "e") "exec emacsclient -nc --socket-name=stumpwm")
 ;; (define-key *root-map* (kbd "c") "exec emacsclient -nc --socket-name=stumpwm -e '(vterm)' ")
 ;;
@@ -20,18 +20,18 @@
 ;;   (kbd "c")   "exec urxvt"
 ;;   (kbd "C-c") "exec xterm")
 
-(load-module "swm-gaps")
-;;(load-module "binwarp")
-;; Head gaps run along the 4 borders of the monitor(s)
-(setf swm-gaps:*head-gaps-size* 10)
+;; (load-module "swm-gaps")
 
-;; Inner gaps run along all the 4 borders of a window
-(setf swm-gaps:*inner-gaps-size* 10)
+;; ;;(load-module "binwarp")
+;; ;; Head gaps run along the 4 borders of the monitor(s)
+;; (setf swm-gaps:*head-gaps-size* 10)
 
+;; ;; Inner gaps run along all the 4 borders of a window
+;; (setf swm-gaps:*inner-gaps-size* 10)
 
-;; Outer gaps add more padding to the outermost borders of a window (touching
-;; the screen border)
-(setf swm-gaps:*outer-gaps-size* 15)
+;; ;; Outer gaps add more padding to the outermost borders of a window (touching
+;; ;; the screen border)
+;; (setf swm-gaps:*outer-gaps-size* 15)
 
 ;; Call command
 ;; toggle-gaps
@@ -46,13 +46,13 @@
 ;;   (run-shell-command "emacs --daemon=stumpwm && emacsclient -nc --socket-name=stumpwm -e '(vterm)'")
 ;; 					;  (swm-gaps:toggle-gaps)
 ;;   (mode-line))
- (when *initializing*
-   (run-shell-command "emacs --daemon && exec emacsclient -nc -a '' -e '(vterm)'")
- 					;  (swm-gaps:toggle-gaps)
+ ;; (when *initializing*
+;;    (run-shell-command "emacs --daemon && exec emacsclient -nc -a '' -e '(vterm)'")
+;;  					;  (swm-gaps:toggle-gaps)
 
-;;   (run-shell-command "emacs --daemon && ")
+;; ;;   (run-shell-command "emacs --daemon && ")
 
-   (mode-line))
+;;    (mode-line))
 
 
 
@@ -77,7 +77,6 @@
 
 ;;(load-module :stumpwm-base16)
 
-(defcommand brave-bkk ()() (run-or-raise "brave-browser" '(:class "Brave-browser")))
 
 
 
@@ -95,6 +94,7 @@
 
 (load-module "net")
 
+ (mode-line)
 ;; (load-module "battery-portable")
 
 ;; ;; Disk space on modeline
@@ -155,42 +155,38 @@
 ;; ("urxvt" urxvt)
 ;; ("K3B" "k3b")))
 ;;(load-module :swm-emacs) 
-(setf stumpwm:*screen-mode-line-format*
-      (list  "%w | %C %l"
-             '(:eval (stumpwm:run-shell-command "date" t)))) 
+;; (setf stumpwm:*screen-mode-line-format*
+;;       (list  "%w | %C %l"
+;;              '(:eval (stumpwm:run-shell-command "date" t)))) 
 
 
 (load-module "spatial-groups")
-(spatial-groups:install-default-keybinds) 
+;(spatial-groups:install-default-keybinds) 
 
 
-(defvar *spatial-map* (make-sparse-keymap))
+;; (defvar *spatial-map* (make-sparse-keymap))
 
-(define-key *root-map* (kbd "C-t") '*spatial-map*)
-  ;; (define-key *spatial-map* (kbd "S-p")      "move-focus up")
-  ;; (define-key *spatial-map* (kbd "S-n")    "move-focus down")
-  ;; (define-key *spatial-map* (kbd "S-b")    "move-focus left")
-  ;; (define-key *spatial-map* (kbd "S-f")   "move-focus right")
+;; (define-key *root-map* (kbd "C-t") '*spatial-map*)
+;;   ;; (define-key *spatial-map* (kbd "S-p")      "move-focus up")
+;;   ;; (define-key *spatial-map* (kbd "S-n")    "move-focus down")
+;;   ;; (define-key *spatial-map* (kbd "S-b")    "move-focus left")
+;;   ;; (define-key *spatial-map* (kbd "S-f")   "move-focus right")
 
-  ;; Control arrows move between screens on the current desktop
-  (define-key *spatial-map* (kbd "b")    "coord-left")
-  (define-key *spatial-map* (kbd "f")   "coord-right")
-  (define-key *spatial-map* (kbd "p")      "coord-up")
-  (define-key *spatial-map* (kbd "n")    "coord-down")
+;;   ;; Control arrows move between screens on the current desktop
+;;   (define-key *spatial-map* (kbd "b")    "coord-left")
+;;   (define-key *spatial-map* (kbd "f")   "coord-right")
+;;   (define-key *spatial-map* (kbd "p")      "coord-up")
+;;   (define-key *spatial-map* (kbd "n")    "coord-down")
 
   ;; Control-Shift left/right to switch desktop Z
-  (define-key *spatial-map* (kbd "B")  "coord-taskleft")
-  (define-key *spatial-map* (kbd "F") "coord-taskright")
+  (define-key *spatial-map* (kbd "s-B")  "coord-taskleft")
+  (define-key *spatial-map* (kbd "s-F") "coord-taskright")
 
   ;; Control-Shift-Up to return to origin 0,0 on current desktop Z
-  (define-key *spatial-map* (kbd "P")    "coord-taskorigin")
+  (define-key *spatial-map* (kbd "s-P")    "coord-taskorigin")
 
   ;; "Pop" back to last desktop position
   (define-key *spatial-map* (kbd "N")  "coord-taskpop") 
-
-
-
-
 
   (define-key *top-map* (kbd "s-b")    "coord-left")
   (define-key *top-map* (kbd "s-f")   "coord-right")
@@ -207,3 +203,5 @@
   ;; "Pop" back to last desktop position
   (define-key *top-map* (kbd "s-N")  "coord-taskpop") 
 
+;; (defcommand brave-bkk ()() (run-or-raise "brave-browser" '(:class "Brave-browser")))
+;; (define-key *root-map* (kbd "b") "brave-bkk") 

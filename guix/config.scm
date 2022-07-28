@@ -16,7 +16,7 @@
  (nongnu packages linux)
  (nongnu system linux-initrd))
 
-(use-package-modules bootloaders certs ssh xorg version-control wm emacs emacs-xyz connman xdisorg) 
+(use-package-modules bootloaders certs ssh xorg version-control wm emacs emacs-xyz connman gnome xdisorg) 
 
 (use-service-modules networking ssh)
 
@@ -73,7 +73,7 @@
  ;;                           "xterm" "rxvt-unicode" "nss-certs"
  ;;                           )
  ;; 			%base-packages)))
- (packages (append (list connman 
+ (packages (append (list connman network-manager
                      ;; window managers
                      stumpwm emacs emacs-vterm 
                      ;; terminal emulator
@@ -88,9 +88,9 @@
 
 
  
- (services (service (connman-service-type
-			    (connman-configuration
-			     (disable-vpn? #t)))))
+ ;; (services (service (connman-service-type
+ ;; 			    (connman-configuration
+ ;; 			     (disable-vpn? #t)))))
 ;;			   %desktop-services)
 
 
