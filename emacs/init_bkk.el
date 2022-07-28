@@ -443,3 +443,5 @@ nil 'alpha
 (use-package crux
   :bind (("C-c o" . crux-open-with)))
 
+
+(use-package ag)
