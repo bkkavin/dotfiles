@@ -1,0 +1,6 @@
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  exec startx
+fi
+export PATH="${PATH}:/home/bkk/git/dotfiles/scripts"
+export PATH="${PATH}:/home/bkk/git/dotfiles/scripts/rofi"
+source /home/bkk/git/dotfiles/guix/guix-init

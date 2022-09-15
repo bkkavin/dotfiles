@@ -1,0 +1,7 @@
+perl-rename -nv 's/\ /-/g' *
+perl-rename -v 's/-_-/-/g' *
+perl-rename -nv 's/---/-/g' *
+
+perl-rename -v 's/[\(\)]//g' *
+
+perl-rename -v 's/\._/\./g' *
