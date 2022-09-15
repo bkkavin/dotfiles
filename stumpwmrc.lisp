@@ -1,16 +1,21 @@
 (in-package :stumpwm)
+(load-module "spatial-groups")
+(spatial-groups:install-default-keybinds)
+(gkill-other)
+
 (run-shell-command "picom &")
 (run-shell-command "xwallpaper --zoom ~/pix/lots-of-trees.jpg")
 (init-load-path #p"/home/bkk/.stumpwm.d/modules") 
-
-(define-key *root-map* (kbd "C-b") "exec brave") 
+(run-shell-command "exec emacsclient -nc -a '' -e '(multi-vterm)'")
+(define-key *root-map* (kbd "b") "exec brave") 
 (define-key *root-map* (kbd "C-b") "exec ebook-viewer")
 (define-key *root-map* (kbd "C-e") "exec nyxt ")
 ;;(define-key *root-map* (kbd "e") "emacs-bkk")
-(define-key *root-map* (kbd "e") "exec emacsclient -nc -a '' -e '(vterm)'")
+(define-key *root-map* (kbd "e") "exec rofi -show run")
+(define-key *root-map* (kbd "e") "exec emacsclient -nc -a '' -e '(multi-vterm)'")
 (define-key *root-map* (kbd "w") "windowlist")
 (define-key *groups-map* (kbd "g") "grouplist")
-(define-key *root-map* (kbd "l") "show-menu")
+(define-key *root-map* (kbd "l") "exec rofi -show run")
 (define-key *root-map* (kbd "T") "send-raw-key")
 ;; (define-key *root-map* (kbd "e") "exec emacsclient -nc --socket-name=stumpwm")
 ;; (define-key *root-map* (kbd "c") "exec emacsclient -nc --socket-name=stumpwm -e '(vterm)' ")
@@ -20,7 +25,8 @@
 ;;   (kbd "c")   "exec urxvt"
 ;;   (kbd "C-c") "exec xterm")
 
-;; (load-module "swm-gaps")
+(load-module "swm-gaps")
+;;("toggle-gaps-on")
 
 ;; ;;(load-module "binwarp")
 ;; ;; Head gaps run along the 4 borders of the monitor(s)
@@ -34,7 +40,7 @@
 ;; (setf swm-gaps:*outer-gaps-size* 15)
 
 ;; Call command
-;; toggle-gaps
+;;(toggle-gaps-on)
 ;;(set-border-colour "#00AAAA")
 ;; modeline
 (setq *mode-line-background-color* "#002222" )
@@ -105,16 +111,17 @@
 
 
 
-(load-module "cpu")
+;;(load-module "cpu")
 
-;; (load-module "mem")
-;; (load-module "wifi")
-;; (load-module "end-session")
-;; (load-module "lookup")
+ ;; (load-module "mem")
+ ;; (load-module "wifi")
+ ;; (load-module "end-session")
+;(load-module "lookup")
 ;; (load-module "screenshots")
-;; (load-module "searchengines")
-;; (load-module "stump-lock")
-;; (load-module "stump-nm") 
+;;  (load-module "searchengines")
+;;  (load-module "stump-lock")
+;;  (load-module "stump-nm") 
+;;
 (load-module "undocumented") 
 (load-module "winner-mode") 
 (defvar *winner-map* (make-sparse-keymap))
@@ -160,10 +167,6 @@
 ;;              '(:eval (stumpwm:run-shell-command "date" t)))) 
 
 
-(load-module "spatial-groups")
-;(spatial-groups:install-default-keybinds) 
-
-
 ;; (defvar *spatial-map* (make-sparse-keymap))
 
 ;; (define-key *root-map* (kbd "C-t") '*spatial-map*)
@@ -179,29 +182,29 @@
 ;;   (define-key *spatial-map* (kbd "n")    "coord-down")
 
   ;; Control-Shift left/right to switch desktop Z
-  (define-key *spatial-map* (kbd "s-B")  "coord-taskleft")
-  (define-key *spatial-map* (kbd "s-F") "coord-taskright")
+;  (define-key *spatial-map* (kbd "s-B")  "coord-taskleft")
+;  (define-key *spatial-map* (kbd "s-F") "coord-taskright")
 
   ;; Control-Shift-Up to return to origin 0,0 on current desktop Z
-  (define-key *spatial-map* (kbd "s-P")    "coord-taskorigin")
+;  (define-key *spatial-map* (kbd "s-P")    "coord-taskorigin")
 
   ;; "Pop" back to last desktop position
-  (define-key *spatial-map* (kbd "N")  "coord-taskpop") 
+;  (define-key *spatial-map* (kbd "N")  "coord-taskpop") 
 
-  (define-key *top-map* (kbd "s-b")    "coord-left")
-  (define-key *top-map* (kbd "s-f")   "coord-right")
-  (define-key *top-map* (kbd "s-p")      "coord-up")
-  (define-key *top-map* (kbd "s-n")    "coord-down")
+  (define-key *top-map* (kbd "s-h")    "coord-left")
+  (define-key *top-map* (kbd "s-l")   "coord-right")
+  (define-key *top-map* (kbd "s-k")      "coord-up")
+  (define-key *top-map* (kbd "s-j")    "coord-down")
 
   ;; Control-Shift left/right to switch desktop Z
-  (define-key *top-map* (kbd "s-B")  "coord-taskleft")
-  (define-key *top-map* (kbd "s-F") "coord-taskright")
+  (define-key *top-map* (kbd "s-H")  "coord-taskleft")
+  (define-key *top-map* (kbd "s-L") "coord-taskright")
 
   ;; Control-Shift-Up to return to origin 0,0 on current desktop Z
-  (define-key *top-map* (kbd "s-P")    "coord-taskorigin")
+  (define-key *top-map* (kbd "s-K")    "coord-taskorigin")
 
   ;; "Pop" back to last desktop position
-  (define-key *top-map* (kbd "s-N")  "coord-taskpop") 
+  (define-key *top-map* (kbd "s-L")  "coord-taskpop") 
 
 ;; (defcommand brave-bkk ()() (run-or-raise "brave-browser" '(:class "Brave-browser")))
 ;; (define-key *root-map* (kbd "b") "brave-bkk") 

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+while read LREAD
+do
+yt-dlp --extract-audio --audio-format mp3 --audio-quality 0 -o "%(uploader)s/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" \"${LREAD}\"
+
+yt-dlp --extract-audio --audio-format mp3 --audio-quality 0 -o "%(title)s%--(playlist)s__%(uploader)s.%(ext)s"  "https://youtube.com/playlist?list=PLlbvqFSkyPp8Z5DhmcarKxyWI_5w5uYLf"
+
+yt-dlp --extract-audio --audio-format mp3 --audio-quality 0 -o "%(title)s.%(ext)s"  "https://youtube.com/playlist?list=PLlbvqFSkyPp8Z5DhmcarKxyWI_5w5uYLf"
+yt-dlp --extract-audio --audio-format mp3 --audio-quality 0 -o "%(title)s.%(ext)s"  "https://www.youtube.com/c/SiennorOfficial/playlists?view=71&shelf_id=75"
+#yt-dlp  --extract-audio --audio-format mp3 --audio-quality 0 -o "%(uploader)s/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" "https://www.youtube.com/c/SiennorOfficial/playlists?view=71&shelf_id=75"
+done < $1
+#done < $1 | head -n 5

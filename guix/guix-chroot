@@ -1,0 +1,6 @@
+mount /dev/sda3 /home/bkk/guixfs
+mount --bind /sys /home/bkk/guixfs/proc
+mount --bind /dev /home/bkk/guixfs/dev
+mount /dev/sda7 /home/bkk/guixfs/boot/efi
+chroot /home/bkk/guixfs /home/bkk/guixfs/gnu/store/d99ykvj3axzzidygsmdmzxah4lvxd6hw-bash-5.1.8/bin/bash
+

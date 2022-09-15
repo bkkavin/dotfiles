@@ -1,4 +1,4 @@
-#GUIX_PROFILE="/home/bkk/.guix-profile"
-#. "$GUIX_PROFILE/etc/profile"
+GUIX_PROFILE="/home/bkk/.guix-profile"
+. "$GUIX_PROFILE/etc/profile"
 
-export GUIX_PROFILE=~/.config/guix/current ; . $GUIX_PROFILE/etc/profile; unset GUIX_PROFILE
+#export GUIX_PROFILE=~/.config/guix/current ; . $GUIX_PROFILE/etc/profile; unset GUIX_PROFILE

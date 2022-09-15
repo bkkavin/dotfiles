@@ -43,7 +43,8 @@ conf-mode-hook))
 
 ;; Override some modes which derive from the above
 (dolist (mode '(org-mode-hook
-		vterm-mode-hook))
+		vterm-mode-hook
+	      info-mode-hook))
 (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 
@@ -81,8 +82,10 @@ org-edit-src-content-indentation 0)
 :init (doom-modeline-mode 1)
 :custom ((doom-modeline-height 15))
 :config  (setq doom-modeline-icon t))
-(use-package doom-themes)
-:init(load-theme 'doom-ir-black t)
+;(use-package doom-themes)
+;:init(load-theme 'doom-ir-black t)
+
+(load-file "~/.emacs.d/bkk-modus-vivendi.el") 
 
 (use-package rainbow-delimiters
 :hook (prog-mode . rainbow-delimiters-mode))
@@ -418,6 +421,13 @@ nil 'alpha
 
 (use-package geiser-mit)
 
+(use-package geiser-guile
+  :config
+  (evil-collection-define-key 'insert 'geiser-repl-mode-map
+    (kbd "<return>") 'geiser-repl--maybe-send))
+
+
+
 
 
 ;; (use-package run-assoc)
@@ -441,7 +451,55 @@ nil 'alpha
 
 	(global-set-key (kbd "C-c v") 'multi-vterm)
 (use-package crux
-  :bind (("C-c o" . crux-open-with)))
+:bind
+(("C-c o" . crux-open-with)))
+
+
+;;     :config
+;;     (evil-collection-define-key 'normal 'dired-mode-map
+
+;;       (kbd "C-c o") 'crux-open-with))
+;; ;
+					;      (kbd "<return") 'crux-open-with
+
+
+
 
 
 (use-package ag)
+
+
+;; Packages written by legendary emacs youtuber Protesilaos Stavrou.
+;; has a phd in philosophy
+;; Bestest waifu there is
+(use-package denote)
+(use-package logos)
+(use-package pulsar)
+(use-package lin)
+(use-package fontaine)
+(use-package cursory)
+(use-package olivetti)
+
+(use-package ess)
+
+
+
+
+;;(add-to-list 'Info-directory-list "/usr/share/info")
+
+;;(add-to-list 'Info-directory-list "/home/bkk/.config/guix/current/share/info/")
+
+(dolist (infodir'( "/usr/share/info"
+	"/home/bkk/.config/guix/current/share/info/"
+ 	))
+(add-to-list 'Info-directory-list infodir ))
+
+;(add-to-list infodir (lambda () (display-line-numbers-mode 0)))
+
+;; (use-package dirvish
+;;   :config
+;;   (dirvish-override-dired-mode))
+
+;(use-package bongo)
+
+(setq org-startup-with-inline-images t)

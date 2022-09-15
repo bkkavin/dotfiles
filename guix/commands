@@ -1,0 +1,2 @@
+sudo mount /dev/sda4 /mnt/guix-fs && sudo mount /dev/sda5 /mnt/guix-fs/boot/efi
+sudo -i guix system init ~/git/dotfiles/guix/config.scm /mnt/guix-fs/
