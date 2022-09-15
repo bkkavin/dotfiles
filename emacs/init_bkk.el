@@ -30,7 +30,7 @@
 (package-refresh-contents))
 
 (require 'use-package)
-(setq use-package-always-ensure t)                     
+(setq use-package-always-ensure t)
 
 (column-number-mode)
 (global-display-line-numbers-mode  
@@ -77,12 +77,12 @@ org-edit-src-content-indentation 0)
 ;(global-set-key (kbd "C-M-w") 'counsel-ibuffer)
 (setq evil-undo-system 'undo-tree)
 (use-package all-the-icons)
-(use-package doom-modeline
-:ensure t
-:init (doom-modeline-mode 1)
-:custom ((doom-modeline-height 15))
-:config  (setq doom-modeline-icon t))
-;(use-package doom-themes)
+;;(use-package doom-modeline
+;;:ensure t
+;;:init (doom-modeline-mode 1)
+;; :custom ((doom-modeline-height 15))
+;; :config (setq doom-modeline-icon t))
+;; ;(use-package doom-themes)
 ;:init(load-theme 'doom-ir-black t)
 
 (load-file "~/.emacs.d/bkk-modus-vivendi.el") 
@@ -122,16 +122,16 @@ org-edit-src-content-indentation 0)
 :map minibuffer-local-map
 ("C-r" . 'counsel-minibueffer-history)))
 
-;;  (use-package helpful
-;;    :commands (helpful-callable helpful-variable helpful-command helpful-key)
-;;   :custom
-;;   (counsel-describe-function-function #'helpful-callable)
-;;   (counsel-describe-variable-function #'helpful-variable)
-;;   :bind
-;;   ([remap describe-function] . counsel-describe-function)
-;;   ([remap describe-command] . helpful-command)
-;;   ([remap describe-variable] . counsel-describe-variable)
-;;   ([remap describe-key] . helpful-key))
+ (use-package helpful
+   :commands (helpful-callable helpful-variable helpful-command helpful-key)
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ([remap describe-function] . counsel-describe-function)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . counsel-describe-variable)
+  ([remap describe-key] . helpful-key))
 
 
 (use-package general
@@ -449,7 +449,7 @@ nil 'alpha
 			(setq-local evil-insert-state-cursor 'box)
 			(evil-insert-state)))) 
 
-	(global-set-key (kbd "C-c v") 'multi-vterm)
+(global-set-key (kbd "C-c v") 'multi-vterm)
 (use-package crux
 :bind
 (("C-c o" . crux-open-with)))
@@ -485,21 +485,37 @@ nil 'alpha
 
 
 
-;;(add-to-list 'Info-directory-list "/usr/share/info")
+(add-to-list 'Info-directory-list "/usr/share/info")
 
-;;(add-to-list 'Info-directory-list "/home/bkk/.config/guix/current/share/info/")
+(add-to-list 'Info-directory-list "/home/bkk/.config/guix/current/share/info/")
 
 (dolist (infodir'( "/usr/share/info"
 	"/home/bkk/.config/guix/current/share/info/"
- 	))
+	))
 (add-to-list 'Info-directory-list infodir ))
 
-;(add-to-list infodir (lambda () (display-line-numbers-mode 0)))
+;;(add-to-list infodir (lambda () (display-line-numbers-mode 0)))
 
 ;; (use-package dirvish
 ;;   :config
 ;;   (dirvish-override-dired-mode))
 
-;(use-package bongo)
+(use-package bongo)
 
 (setq org-startup-with-inline-images t)
+(with-eval-after-load 'geiser-guile
+ (add-to-list 'geiser-guile-load-path "~/git/guix/guix/guix"))
+
+(setq org-enforce-todo-dependencies t)
+(setq org-agenda-dim-blocked-tasks 'invisible)
+
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
+
+
+  ;; (setq org-todo-keywords
+  ;;           '((sequence "ASK(a)" "WAIT(w)" "RECV(r)" "|" "DONE(d)" "SUBMITTED(s)")))
+
+;#+SEQ_TODO: ASK(a) WAIT(w) RECV(r) DONE(d) | SUBMITTED(s)
+
+

@@ -17,9 +17,9 @@
 (define-key *groups-map* (kbd "g") "grouplist")
 (define-key *root-map* (kbd "l") "exec rofi -show run")
 (define-key *root-map* (kbd "T") "send-raw-key")
-;; (define-key *root-map* (kbd "e") "exec emacsclient -nc --socket-name=stumpwm")
-;; (define-key *root-map* (kbd "c") "exec emacsclient -nc --socket-name=stumpwm -e '(vterm)' ")
-;;
+;; (defcommand send-C-t () () 
+;;     (send-raw-key "C-t"))
+
 
 					; (fill-keymap *root-map*
 ;;   (kbd "c")   "exec urxvt"

@@ -9,34 +9,26 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 
 if [ -f $sysresources ]; then
 
-
-
-
-
-
-
     xrdb -merge $sysresources
 
 fi
 
 if [ -f $sysmodmap ]; then
+
     xmodmap $sysmodmap
+
 fi
 
 if [ -f "$userresources" ]; then
-
-
-
-
-
-
 
     xrdb -merge "$userresources"
 
 fi
 
 if [ -f "$usermodmap" ]; then
+
     xmodmap "$usermodmap"
+
 fi
 
 # start some nice programs
@@ -54,6 +46,7 @@ fi
 #xterm -geometry 80x20+494-0 &
 #exec xterm -geometry 80x66+0+0 -name login
 #exec xmonad
-exec dwm
-xwallpaper --zoom ~/Downloads/wallpapers/sunset-rvb.jpg
+exec stumpwm
+#xwallpaper --zoom ~/Downloads/wallpapers/sunset-rvb.jpg
 #sxhkd &
+
