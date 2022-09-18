@@ -1,0 +1,126 @@
+{
+  "main_window_geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAAAAAAAAEQAAB38AAAQ3AAAAAAAAABEAAAd/AAAENwAAAAAAAAAAB4AAAAAAAAAAEQAAB38AAAQ3"
+  },
+  "main_window_state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAH9AAAAAgAAAAAAAAAAAAAAAPwCAAAAAvsAAAAQAHQAbwBjAC0AZABvAGMAawAAAAAA/////wAAAIoA////+wAAABYAcwBlAGEAcgBjAGgALQBkAG8AYwBrAAAAAAD/////AAAAmgD///8AAAABAAAAAAAAAAD8AgAAAAT7AAAAFgBsAG8AbwBrAHUAcAAtAGQAbwBjAGsAAAAAAP////8AAACEAP////sAAAAcAGIAbwBvAGsAbQBhAHIAawBzAC0AZABvAGMAawAAAAAA/////wAAAPIA////+wAAABwAaQBuAHMAcABlAGMAdABvAHIALQBkAG8AYwBrAAAAAAD/////AAAAFAD////7AAAAHgBoAGkAZwBoAGwAaQBnAGgAdABzAC0AZABvAGMAawAAAAAA/////wAAANIA////AAAHgAAABCcAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAAAAAAAAQAAAB4AYQBjAHQAaQBvAG4AcwBfAHQAbwBvAGwAYgBhAHICAAAAAP////8AAAAAAAAAAA=="
+  },
+  "old_prefs_migrated": true,
+  "session_data": {
+    "base_font_size": 5,
+    "book_scrollbar": false,
+    "controls_help_shown_count": 2,
+    "current_color_scheme": "*bkk dark",
+    "hide_tooltips": null,
+    "keyboard_shortcuts": {
+      "down": [
+        {
+          "altKey": false,
+          "ctrlKey": false,
+          "key": "ArrowDown",
+          "metaKey": false,
+          "shiftKey": false
+        },
+        {
+          "altKey": false,
+          "ctrlKey": false,
+          "key": "j",
+          "metaKey": false,
+          "shiftKey": false
+        }
+      ],
+      "up": [
+        {
+          "altKey": false,
+          "ctrlKey": false,
+          "key": "ArrowUp",
+          "metaKey": false,
+          "shiftKey": false
+        },
+        {
+          "altKey": false,
+          "ctrlKey": false,
+          "key": "k",
+          "metaKey": false,
+          "shiftKey": false
+        }
+      ]
+    },
+    "lines_per_sec_smooth": 80,
+    "margin_bottom": 50,
+    "margin_left": 100,
+    "margin_right": 100,
+    "margin_top": 50,
+    "override_book_colors": "dark",
+    "read_mode": "flow",
+    "standalone_font_settings": {
+      "minimum_font_size": 30,
+      "serif_family": "Hack"
+    },
+    "standalone_misc_settings": {
+      "remember_window_geometry": true
+    },
+    "standalone_recently_opened": [
+      {
+        "authors": [
+          "Sweigart, Albert"
+        ],
+        "key": "/home/bkk/shared/books/Sweigart, Albert - Automate the Boring Stuff with Python_ Practical Programming for Total Beginners-No Starch Press (2020_2015).epub",
+        "pathtoebook": "/home/bkk/shared/books/Sweigart, Albert - Automate the Boring Stuff with Python_ Practical Programming for Total Beginners-No Starch Press (2020_2015).epub",
+        "timestamp": "2022-09-17T20:21:16.472Z",
+        "title": "Automate the Boring Stuff with Python: Practical Programming for Total Beginners"
+      },
+      {
+        "authors": [
+          "Scott Chacon",
+          "Ben Straub"
+        ],
+        "key": "/home/bkk/shared/books/progit.epub",
+        "pathtoebook": "/home/bkk/shared/books/progit.epub",
+        "timestamp": "2022-09-12T15:06:30.659Z",
+        "title": "Pro Git"
+      },
+      {
+        "authors": [
+          "Peter Siebel"
+        ],
+        "key": "/home/bkk/books/(Books for professionals by professionals_ The expert's voice in programming languages) Seibel, Peter - Practical Common Lisp-Apress (2011).epub",
+        "pathtoebook": "/home/bkk/books/(Books for professionals by professionals_ The expert's voice in programming languages) Seibel, Peter - Practical Common Lisp-Apress (2011).epub",
+        "timestamp": "2022-05-25T15:41:29.637Z",
+        "title": "Practical Common Lisp"
+      },
+      {
+        "authors": [
+          "Sweigart, Albert"
+        ],
+        "key": "/home/bkk/books/Sweigart, Albert - Automate the Boring Stuff with Python_ Practical Programming for Total Beginners-No Starch Press (2020_2015).epub",
+        "pathtoebook": "/home/bkk/books/Sweigart, Albert - Automate the Boring Stuff with Python_ Practical Programming for Total Beginners-No Starch Press (2020_2015).epub",
+        "timestamp": "2022-05-25T15:40:17.942Z",
+        "title": "Automate the Boring Stuff with Python: Practical Programming for Total Beginners"
+      },
+      {
+        "authors": [
+          "Richard Szeliski"
+        ],
+        "key": "/home/bkk/books/(Texts in Computer Science) Richard Szeliski - Computer Vision_ Algorithms and Applications-Springer (2010).pdf",
+        "pathtoebook": "/home/bkk/books/(Texts in Computer Science) Richard Szeliski - Computer Vision_ Algorithms and Applications-Springer (2010).pdf",
+        "timestamp": "2022-04-07T17:48:18.269Z",
+        "title": "Computer Vision: Algorithms and Applications"
+      }
+    ],
+    "user_color_schemes": {
+      "*bkk dark": {
+        "background": "#000000",
+        "foreground": "#999999",
+        "name": "bkk dark"
+      },
+      "*bog": {
+        "background": "#002222",
+        "foreground": "#999999",
+        "name": "bog"
+      }
+    }
+  }
+}

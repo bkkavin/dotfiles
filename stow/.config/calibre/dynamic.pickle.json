@@ -1,0 +1,17 @@
+{
+  "add books dialog dir": "/home/bkk/books",
+  "database location dialog": "/home/bkk/books/calibre",
+  "ebook viewer open dialog": "/home/bkk/books",
+  "sort_history": [
+    [
+      "timestamp",
+      false
+    ],
+    [
+      "timestamp",
+      false
+    ]
+  ],
+  "welcome_wizard_device": "kindle_pw",
+  "welcome_wizard_was_run": true
+}

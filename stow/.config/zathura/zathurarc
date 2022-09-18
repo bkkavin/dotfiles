@@ -3,6 +3,6 @@ set selection-clipboard clipboard
 set recolor true
 set recolor-darkcolor  "#999999"
 #set recolor-darkcolor  "#002222"
-set recolor-lightcolor  "#002222"
+#set recolor-lightcolor  "#002222"
 set scroll-step 300
 map i recolor
