@@ -1,0 +1,2 @@
+
+sudo pacman -S texlive-most texlive-lang texlive-bibtexextra texlive-fontsextra biber && paru -S texlive-latexindent-meta

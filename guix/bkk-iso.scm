@@ -3,7 +3,7 @@
  (nongnu packages linux)
  (nongnu system linux-initrd)
 )
-(use-service-modules desktop xorg)
+(use-service-modules pm desktop xorg)
 (use-package-modules certs gnome lisp wm)
 
 (operating-system
@@ -50,7 +50,9 @@
                      ;; sbcl-ttf-fonts font-dejavu
 		    %base-packages))
 
- (services (append (list (service xfce-desktop-service-type)
+  (services (append (list (service tlp-service-type)
+			  (service thermald-service-type)
+			  (service xfce-desktop-service-type)
                           (set-xorg-configuration
                            (xorg-configuration
                             (keyboard-layout keyboard-layout))))
