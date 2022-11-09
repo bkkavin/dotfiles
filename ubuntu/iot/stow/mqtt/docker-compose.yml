@@ -7,9 +7,9 @@ services:
                         - "1883:1883"
                         - "9001:9001"
                 volumes:
-                        - /var/rootdirs/home/root/mqtt/config:/mosquitto/config
-                        - /var/rootdirs/home/root/mqtt/data:/mosquitto/data
-                        - /var/rootdirs/home/root/mqtt/log:/mosquitto/log
+                        - /home/root/mqtt/config:/mosquitto/config
+                        - /home/root/mqtt/data:/mosquitto/data
+                        - /home/root/mqtt/log:/mosquitto/log
 volumes:
         config:
         data:
