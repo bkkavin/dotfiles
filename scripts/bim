@@ -1,0 +1,4 @@
+bluetoothctl disconnect 8C:FD:15:D0:41:6D
+bluetoothctl power on 
+bluetoothctl agent on 
+bluetoothctl connect 8C:FD:15:D0:41:6D 
