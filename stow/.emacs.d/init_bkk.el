@@ -520,4 +520,32 @@ nil 'alpha
 
 ;#+SEQ_TODO: ASK(a) WAIT(w) RECV(r) DONE(d) | SUBMITTED(s)
 
+(use-package tex
+  :ensure auctex)
 
+(use-package auctex
+  :defer t 
+  :init
+(setq TeX-auto-save t)
+     (setq TeX-parse-self t)
+     (setq-default TeX-master nil))
+
+
+(use-package reftex
+  :init
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
+(add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
+)
+
+(use-package yasnippet 
+  :init
+  (yas-global-mode 1))
+
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+(setq org-latex-listings 'minted)
+(setq org-latex-pdf-process
+      '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
+(use-package flycheck) 

@@ -7,10 +7,39 @@ services:
                         - "1883:1883"
                         - "9001:9001"
                 volumes:
-                        - /home/root/mqtt/config:/mosquitto/config
-                        - /home/root/mqtt/data:/mosquitto/data
-                        - /home/root/mqtt/log:/mosquitto/log
+                        - /home/ubuntu/mqtt/config:/mosquitto/config
+                        - /home/ubuntu/mqtt/data:/mosquitto/data
+                        - /home/ubuntu/mqtt/log:/mosquitto/log
 volumes:
         config:
         data:
         log:
+services:
+        mqtt:
+                container_name: mosquitto
+                image: eclipse-mosquitto
+                restart: always
+                ports:
+                        - "1883:1883"
+                        - "9001:9001"
+                volumes:
+                        - /home/ubuntu/iot/mqtt/config:/mosquitto/config
+                        - /home/ubuntu/iot/mqtt/data:/mosquitto/data
+                        - /home/ubuntu/iot/mqtt/log:/mosquitto/log
+volumes:
+        config:
+        data:
+        log:
+services:
+        mqtt:
+                container_name: mosquitto
+                image: eclipse-mosquitto
+                restart: always
+		network_mode: host
+                ports:
+                        - "1883:1883"
+                        - "9001:9001"
+                volumes:
+                        - ./config:/mosquitto/config
+                        - ./mqtt/data:/mosquitto/data
+                        - ./log:/mosquitto/log

@@ -1,4 +1,0 @@
-bluetoothctl disconnect E4:41:22:A7:79:E0 
-bluetoothctl power on 
-bluetoothctl agent on 
-bluetoothctl connect E4:41:22:A7:79:E0  
