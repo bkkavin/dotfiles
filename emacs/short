@@ -1,0 +1,41 @@
+[general]
+accounts = nerd 
+#socktimeout = 120 
+autorefresh = 10
+#quick =10
+#maxage = 2022-11-10
+#maxage = 3
+synclabels = yes 
+ignorelabels = \Important
+
+[Account nerd]
+localrepository = nerd-local 
+remoterepository = nerd-remote 
+maildir-windows-compatible = yes 
+synclabels = yes
+
+[Repository nerd-local]
+
+type = GmailMaildir
+localfolders = ~/shared/mail/nerd
+sep = / 
+#synclabels = yes
+#keepalive = 60
+#holdconnectionopen = yes
+
+
+
+[Repository nerd-remote]
+type = Gmail 
+remoteuser = nerdbkk2000@gmail.com
+remotepass = swctrpamibgkqaof
+readonly = true
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail', '[Gmail]/Sent Mail']
+
+#nametrans =  lambda foldername: re.sub ('^\[Gmail\]', 'nerd-remote', foldername) and re.sub('All\ Mail$', 'All', foldername) and re.sub('Sent\ Mail$', 'Sent', foldername)
+
+nametrans =  lambda foldername: re.sub ('^\[gmail\]', 'nerd-remote', re.sub('all_mail$', 'all', re.sub( 'sent_mail$', 'sent', re.sub (' ', '_', foldername.lower()))))
+
+
