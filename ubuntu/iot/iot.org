@@ -1,0 +1,4 @@
+grafana port 3000
+node-red 1880
+mosquitto 1883
+influx 8086
