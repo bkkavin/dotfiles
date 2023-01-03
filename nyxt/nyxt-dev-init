@@ -1,0 +1,2 @@
+#!/bin/sh
+guix package --install-from-file=build-scripts/nyxt.scm

@@ -1,0 +1,2 @@
+# remove unused orphaned packages
+pacman -Qtdq | pacman -Rns -

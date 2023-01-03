@@ -2,7 +2,7 @@
 accounts = nerd 
 #socktimeout = 120 
 autorefresh = 10
-#quick =10
+quick =10
 #maxage = 2022-11-10
 #maxage = 3
 synclabels = yes 
