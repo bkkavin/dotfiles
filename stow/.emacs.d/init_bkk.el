@@ -22,7 +22,7 @@
 ;; Initialize package sources
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-;       ("org" . "https://orgmode.org/elpa/")
+       ("org" . "https://orgmode.org/elpa/")
 ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
@@ -273,62 +273,62 @@ org-edit-src-content-indentation 0)
 ;; ;;     :hook (org-mode . bkk/org-mode-visual-fill))
 
 
-(use-package org-roam
-:ensure t
-:init
-(setq org-roam-v2-ack t)
-:custom
-(org-roam-directory "~/git/orgfiles/roam")
-:bind (("C-c n l" . org-roam-buffer-toggle)
-("C-c n f" . org-roam-node-find)
-("C-c n i" . org-roam-node-insert))
-:config
-(org-roam-setup))
+;; (use-package org-roam
+;; :ensure t
+;; :init
+;; (setq org-roam-v2-ack t)
+;; :custom
+;; (org-roam-directory "~/git/orgfiles/roam")
+;; :bind (("C-c n l" . org-roam-buffer-toggle)
+;; ("C-c n f" . org-roam-node-find)
+;; ("C-c n i" . org-roam-node-insert))
+;; :config
+;; (org-roam-setup))
 
 
-(use-package org-roam-ui
-  :straight
-    (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
-    :after org-roam
-;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-;;         a hookable mode anymore, you're advised to pick something yourself
-;;         if you don't care about startup time, use
-;;  :hook (after-init . org-roam-ui-mode)
-    :config
-    (setq org-roam-ui-sync-theme t
-          org-roam-ui-follow t
-          org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start nil))
+;; (use-package org-roam-ui
+;;   :straight
+;;     (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+;;     :after org-roam
+;; ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;; ;;         a hookable mode anymore, you're advised to pick something yourself
+;; ;;         if you don't care about startup time, use
+;; ;;  :hook (after-init . org-roam-ui-mode)
+;;     :config
+;;     (setq org-roam-ui-sync-theme t
+;;           org-roam-ui-follow t
+;;           org-roam-ui-update-on-save t
+;;           org-roam-ui-open-on-start nil))
 
-(use-package websocket
-:after org-roam
-:straight (:host github :repo "ahyatt/emacs-websocket" :branch "main")
-)
+;; (use-package websocket
+;; :after org-roam
+;; :straight (:host github :repo "ahyatt/emacs-websocket" :branch "main")
+;; )
 
-(use-package simple-httpd
-:after org-roam
-)
+;; (use-package simple-httpd
+;; :after org-roam
+;; )
 
-(use-package org-roam-ui
-:straight
-(:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
-:after org-roam
-;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-;;         a hookable mode anymore, you're advised to pick something yourself
-;;         if you don't care about startup time, use
-;; :hook (after-init . org-roam-ui-mode)
-:config
-(setq org-roam-ui-sync-theme t
-org-roam-ui-follow t
-org-roam-ui-update-on-save t
-org-roam-ui-open-on-start nil))
+;; (use-package org-roam-ui
+;; :straight
+;; (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+;; :after org-roam
+;; ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;; ;;         a hookable mode anymore, you're advised to pick something yourself
+;; ;;         if you don't care about startup time, use
+;; ;; :hook (after-init . org-roam-ui-mode)
+;; :config
+;; (setq org-roam-ui-sync-theme t
+;; org-roam-ui-follow t
+;; org-roam-ui-update-on-save t
+;; org-roam-ui-open-on-start nil))
 
 (use-package elfeed
 :ensure t
 :config
 (setq elfeed-db-directory (expand-file-name "elfeed" user-emacs-directory)
 elfeed-show-entry-switch 'display-buffer)
-(elfeed-org)
+;(elfeed-org)
 :bind
 ("C-x w" . elfeed )) 
 
@@ -541,6 +541,7 @@ nil 'alpha
   :init
   (yas-global-mode 1))
 
+  
 (add-to-list 'org-latex-packages-alist '("" "minted"))
 (setq org-latex-listings 'minted)
 (setq org-latex-pdf-process
@@ -549,3 +550,12 @@ nil 'alpha
         "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
 (use-package flycheck) 
+
+(require 'notmuch) 
+
+
+;(use-package ox)
+(use-package ox-hugo)
+  ;; :ensure t   ;Auto-install the package from Melpa
+  ;; :pin melpa  ;`package-archives' should already have ("melpa" . "https://melpa.org/packages/")
+  ;; :after ox)
