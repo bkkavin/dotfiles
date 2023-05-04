@@ -1,0 +1,6 @@
+bluetoothctl disconnect 2C:FD:B4:AC:05:B8
+bluetoothctl power on 
+bluetoothctl agent on 
+bluetoothctl connect 2C:FD:B4:AC:05:B8 
+ 
+  

@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name:verilog-outline
+# key:pp
+# --
+
+** Design Code :
+** Verilog Test Fixture : 
+** EDA Interface : 
+** Output Waveform : 
+

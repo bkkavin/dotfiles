@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name:verilog org mode
+# key:ff 
+# --
+#+begin_src  verilog
+$0
+#+end_src

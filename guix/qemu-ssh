@@ -1,0 +1,19 @@
+#$(guix system vm bkk-qemu-guix.scm) -nic user,model=virtio-net-pci,hostfwd=tcp::10022-:22
+
+#/home/bkk/shared/dls/os/qemu/bkk-guix.qcow2 -nic user,model=virtio-net-pci,hostfwd=tcp::10022-:22
+
+# -nic user,model=virtio-net-pci,hostfwd=tcp::10022-:22
+
+# qemu-system-x86_64 /home/bkk/shared/dls/os/qemu/guix-fresh.qcow2 -nic user,model=virtio-net-pci,hostfwd=tcp::10022-:22
+
+
+qemu-system-x86_64 \
+   -nic user,model=virtio-net-pci,hostfwd=tcp::22-:22 \
+   -enable-kvm -m 2048 \
+   -device virtio-blk,drive=myhd \
+   -drive if=none,file=/home/bkk/Downloads/guix-system-vm-image-1.4.0.x86_64-linux.qcow2,id=myhd
+
+#/home/bkk/Downloads
+#   -drive if=none,file=/home/bkk/shared/dls/os/qemu/guix-fresh.qcow2,id=myhd
+
+#qemu-system-x86_64 /home/bkk/Downloads/guix-system-vm-image-1.4.0.x86_64-linux.qcow2 -nic user,hostfwd=tcp::60022-:22

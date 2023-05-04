@@ -1,0 +1,3 @@
+ guix shell --container --network guix \
+       --preserve='^DISPLAY$'
+

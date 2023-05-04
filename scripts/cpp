@@ -1,0 +1,3 @@
+g++ -ggdb -pedantic-errors -Wall -Weffc++ -Wextra -Wsign-conversion -Werror -std=c++20 "$@"
+
+
