@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t -*-
 ;; init.org
 
 (setq inhibit-startup-message t)
@@ -8,8 +9,8 @@
 
 (menu-bar-mode -1)         ; Disable the menu bar
 (set-fringe-mode 10)        ; Give some breathing room
-
-
+;(menu-bar-mode t)
+;(tool-bar-mode t)          ; Disable the toolbar
 ;; Set up the visible bell
 (setq visible-bell t)
 
@@ -44,6 +45,7 @@ conf-mode-hook))
 ;; Override some modes which derive from the above
 (dolist (mode '(org-mode-hook
 		vterm-mode-hook
+		eshell-mode-hook
 	      info-mode-hook))
 (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
@@ -199,11 +201,6 @@ org-edit-src-content-indentation 0)
 :config (counsel-projectile-mode))
 
 (use-package forge)
-
-(use-package magit
-:custom
-(magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
-
 
 
 
@@ -421,11 +418,6 @@ nil 'alpha
 
 (use-package geiser-mit)
 
-(use-package geiser-guile
-  :config
-  (evil-collection-define-key 'insert 'geiser-repl-mode-map
-    (kbd "<return>") 'geiser-repl--maybe-send))
-
 
 
 
@@ -442,15 +434,8 @@ nil 'alpha
 ;; (setq dired-guess-shell-alist-user
 ;;       (list
 ;;        (list "\\.pdf$" "zathura")));;
-(use-package multi-vterm
-	:config
-	(add-hook 'vterm-mode-hook
-			(lambda ()
-			(setq-local evil-insert-state-cursor 'box)
-			(evil-insert-state)))) 
-
-(global-set-key (kbd "C-c v") 'multi-vterm)
 (use-package crux
+
 :bind
 (("C-c o" . crux-open-with)))
 
@@ -506,7 +491,7 @@ nil 'alpha
 
 (setq org-startup-with-inline-images t)
 (with-eval-after-load 'geiser-guile
- (add-to-list 'geiser-guile-load-path "~/git/guix/guix/guix"))
+ (add-to-list 'geiser-guile-load-path "~/shared/git/guix/"))
 
 (setq org-enforce-todo-dependencies t)
 (setq org-agenda-dim-blocked-tasks 'invisible)
@@ -542,16 +527,9 @@ nil 'alpha
   (yas-global-mode 1))
 
   
-(add-to-list 'org-latex-packages-alist '("" "minted"))
-(setq org-latex-listings 'minted)
-(setq org-latex-pdf-process
-      '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-
 (use-package flycheck) 
 
-(require 'notmuch) 
+(use-package notmuch) 
 
 
 ;(use-package ox)
@@ -559,3 +537,94 @@ nil 'alpha
   ;; :ensure t   ;Auto-install the package from Melpa
   ;; :pin melpa  ;`package-archives' should already have ("melpa" . "https://melpa.org/packages/")
   ;; :after ox)
+
+;(add-to-list 'tramp-remote-path "/run/current-system/profile/bin" t)
+;(add-to-list 'tramp-remote-path "/run/current-system/profile/sbin" t)
+;(rg-enable-default-bindings)
+
+
+
+(org-babel-do-load-languages
+      'org-babel-load-languages
+      '((emacs-lisp . nil)
+        (C . t)))
+
+(setq-default tab-width 4)
+(setq gdb-many-windows t)
+
+(use-package markdown-mode)
+(use-package prettier)
+(use-package wc-mode)
+(use-package js2-mode)
+
+
+(use-package emmet-mode
+:config
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+(add-hook 'web-mode-hook  'emmet-mode) 
+)
+
+(use-package web-mode
+  :config
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)))
+
+(use-package magit 
+:custom
+(magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+
+:config
+(global-set-key (kbd "C-x g") 'magit)
+  )
+
+
+(use-package geiser-guile
+   :config
+   (evil-collection-define-key 'insert 'geiser-repl-mode-map
+     (kbd "<return>") 'geiser-repl--maybe-send))
+
+
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+(setq org-latex-listings 'minted)
+(setq org-latex-pdf-process
+      '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+        "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
+;; (require 'vterm)
+ (use-package vterm)
+;;   ;:load-path  "~/shared/git/emacs-libvterm/vterm-module.so"
+ 
+;;   )
+ (use-package multi-vterm 
+	 :config
+	 (add-hook 'vterm-mode-hook
+	 		(lambda ()
+	 		(setq-local evil-insert-state-cursor 'box)
+	 		(evil-insert-state)))
+	 (global-set-key (kbd "C-c v") 'multi-vterm)
+) 
+
+;; (dolist (mode '(
+;; 		eshell-mode-hook
+;; 	      ))
+;; (add-hook mode (lambda () (evil-mode 0))))
+
+;;    (evil-collection-define-key 'insert 'eshell-mode-map
+;;      (kbd "<return>") 'RET)
+;;
+
+
+; etq evil-emacs-state-
+;   (define-key key-translation-map (kbd "RET") (kbd "RET"))
+
+
+ ;	 (global-set-key (kbd "C-c v") 'eshell)
+

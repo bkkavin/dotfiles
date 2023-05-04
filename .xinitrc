@@ -50,3 +50,4 @@ exec stumpwm
 #xwallpaper --zoom ~/Downloads/wallpapers/sunset-rvb.jpg
 #sxhkd &
 
+source ~/.init
