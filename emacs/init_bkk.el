@@ -3,6 +3,7 @@
 
 (setq inhibit-startup-message t)
 
+(desktop-save-mode 1)
 (scroll-bar-mode -1)        ; Disable visible scrollbar
 (tool-bar-mode -1)          ; Disable the toolbar
 (tooltip-mode -1)           ; Disable tooltips
@@ -347,8 +348,8 @@ elfeed-show-entry-switch 'display-buffer)
 
 
 
-(set-frame-parameter (selected-frame) 'alpha '(75 . 75))
-(add-to-list 'default-frame-alist '(alpha . (75 . 75)))
+;; (set-frame-parameter (selected-frame) 'alpha '(75 . 75))
+;; (add-to-list 'default-frame-alist '(alpha . (75 . 75)))
 
 
 (defun toggle-transparency ()
@@ -603,15 +604,22 @@ nil 'alpha
 ;;   ;:load-path  "~/shared/git/emacs-libvterm/vterm-module.so"
  
 ;;   )
+
+
+(defun bkk/vterm ()
+   (interactive)
+	(evil-window-vsplit)
+	(evil-window-right 1)
+	(multi-vterm))
+
  (use-package multi-vterm 
 	 :config
 	 (add-hook 'vterm-mode-hook
 	 		(lambda ()
 	 		(setq-local evil-insert-state-cursor 'box)
 	 		(evil-insert-state)))
-	 (global-set-key (kbd "C-c v") 'multi-vterm)
+	 (global-set-key (kbd "C-c v") 'bkk/vterm)
 ) 
-
 ;; (dolist (mode '(
 ;; 		eshell-mode-hook
 ;; 	      ))
@@ -746,3 +754,4 @@ nil 'alpha
   :after (treemacs)
   :ensure t
   :config (treemacs-set-scope-type 'Tabs))
+
